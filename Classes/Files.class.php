@@ -44,8 +44,8 @@
              
              while(!feof($myfile)) 
              {
-                   $line= fgets($myfile);
-                   $ArrayLine=explode($this->separator,$line);
+                   $newline= fgets($myfile);
+                   $ArrayLine=explode($this->separator,$newline);
                    if (strval($ArrayLine[0]) == strval($id))
                    {
                        fclose($myfile);
@@ -57,19 +57,19 @@
 
         public function getRowKeyword($keyWord){
             $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-            //checks if $keyword exists inside the string->line else return false
+            //checks if $keyword exists inside the string->newline else return false
             while(!feof($myfile)) 
             {
-                $line=fgets($myfile);
+                $newline=fgets($myfile);
 
-                //returns the location of $keyword inside the string -> $line
-                $i=strpos($line, $keyWord);
+                //returns the location of $keyword inside the string -> $newline
+                $i=strpos($newline, $keyWord);
                 
                 if ($i>=0 && $i !=null)
                 {
-                    //echo $keyWord."####".$line;
+                    //echo $keyWord."####".$newline;
                     fclose($myfile);	
-                    return $line;
+                    return $newline;
                 }
             }
             fclose($myfile);	
@@ -92,7 +92,7 @@
             $recordWithId = $id.$this->separator.$record;
             fwrite($myfile, $recordWithId."\r\n");
             fclose($myfile);
-            echo $recordWithId; 
+            //echo $recordWithId; 
         }
     }
 ?>

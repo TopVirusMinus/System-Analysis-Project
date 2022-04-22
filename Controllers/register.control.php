@@ -12,19 +12,17 @@
             //file 'f' that points to user-type file, with a separator '~'
             $f = new File("../Database/user-type.txt","~");
 
-            //loops until i == file-line-size
+            //loops until i == file-newline-size
             for($i = 1; $i < $f->count();$i++){
 
                 //gets an array of user-type with the id 'i'
                 // e.g [1, student] for i = 1, [2, teacher] for i == 2
-                $line = $f->getIdRow($i);
+                $newline = $f->getIdRow($i);
 
                 /* creates a button with name 'user-type' & value "id of the user" and
                    the content of the button is the name of the user */
 
-                if($line[0] != 3){ //doesn't display a button for admin 
-                    echo '<button type="submit" name="user-type" value="'.$line[0].'">'.$line[1].'</button>';
-                }
+                echo '<button type="submit" name="user-type" value="'.$newline[0].'">'.$newline[1].'</button>';
             }
         ?>
         <br>
@@ -39,12 +37,12 @@
         if(isset($_POST['user-type'])){
             //puts the content of signup-main.php in a form <see cref="DoSomething" />
             require_once "../Views/signup-main.php";
-            //$line = array of specific attributes per user
-            $line = $f->getIdRow($_POST['user-type']);
-            if($line){
-                for($i = 2; $i<count($line); $i++){
+            //$newline = array of specific attributes per user
+            $newline = $f->getIdRow($_POST['user-type']);
+            if($newline){
+                for($i = 2; $i<count($newline); $i++){
                     //generate input fields with the attribute name and type from the text file
-                    echo '<input required type="'.$line[1].'" placeholder='.'"Enter '.$line[$i].'"'.'name="'.$line[$i].'"'.'id=""><br><br>';
+                    echo '<input required type="'.$newline[1].'" placeholder='.'"Enter '.$newline[$i].'"'.'name="'.$newline[$i].'"'.'id=""><br><br>';
                 }
             }
             echo '<input type="hidden" name = "u-type" value ='.'"'.$_POST['user-type'].'" />';
@@ -58,6 +56,7 @@
     //when register button is pressed creating user function is called
     if(isset($_POST["register"])){
         require_once "../Functions/register.function.php";
+        //echo $_POST;
         createUser($_POST);
     }
 ?>
