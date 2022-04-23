@@ -10,7 +10,7 @@
     print_r($_SESSION);
     $usersFile = new File("../Database/users.txt", "~");
     $currUser = $usersFile->getIdRow($_SESSION["id"]);
-
+    //test
     echo "Hello ".$currUser[2];
 
     echo '<table style = "border: 1px solid black;">
