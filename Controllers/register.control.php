@@ -40,11 +40,11 @@
             //puts the content of signup-main.php in a form <see cref="DoSomething" />
             require_once "../Views/signup-main.php";
             //$line = array of specific attributes per user
-            $line = $f->getIdRow($_POST['user-type']);
-            if($line){
-                for($i = 2; $i<count($line); $i++){
+            $newline = $f->getIdRow($_POST['user-type']);
+            if($newline){
+                for($i = 2; $i<count($newline); $i++){
                     //generate input fields with the attribute name and type from the text file
-                    echo '<input required type="'.$line[1].'" placeholder='.'"Enter '.$line[$i].'"'.'name="'.$line[$i].'"'.'id=""><br><br>';
+                    echo '<input required type="'.$newline[1].'" placeholder='.'"Enter '.$newline[2].'"'.'name="'.$newline[2].'"'.'id=""><br><br>';
                 }
             }
             echo '<input type="hidden" name = "u-type" value ='.'"'.$_POST['user-type'].'" />';
