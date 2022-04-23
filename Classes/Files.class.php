@@ -117,5 +117,31 @@
             }
             return (int)$LastId;	
         }
+
+        function getAllKeyword($index, $keyWord)
+        {
+            $allKeywords = array();
+            if ( !file_exists($this->destination) ) {
+                return 0;
+            }		
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+
+                if(strlen($line) == 0){
+                    break;
+                }
+
+                if($ArrayLine[$index] == $keyWord)
+                {
+                    array_push($allKeywords,$ArrayLine);    
+                }
+                
+            }
+            return $allKeywords;	
+        }
     }
 ?>
