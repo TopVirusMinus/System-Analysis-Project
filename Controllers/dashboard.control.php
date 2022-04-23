@@ -3,7 +3,8 @@
     $title = "Dashboard";
     require "../Views/header.php";
 ?>
-
+<a href="../Functions/dologout.php">Log out</a>
+<br>
 <?php
     require_once "../Classes/Files.class.php";
     print_r($_SESSION);
@@ -18,12 +19,12 @@
             <th style = "border: 1px solid black;">Last name</th>
         </tr>
         <tr style = "border: 1px solid black;">
-            <td style = "border: 1px solid black;">John</td>
-            <td style = "border: 1px solid black;">Doe</td>
+            <td style = "border: 1px solid black;">Folan</td>
+            <td style = "border: 1px solid black;">El Folany</td>
         </tr>
         <tr style = "border: 1px solid black;">
-            <td style = "border: 1px solid black;">Jane</td>
-            <td style = "border: 1px solid black;"\>Doe</td>
+            <td style = "border: 1px solid black;">3elan</td>
+            <td style = "border: 1px solid black;"\>El 3elany</td>
         </tr>
     </table>';
 ?>
