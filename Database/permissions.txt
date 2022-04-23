@@ -1,9 +1,3 @@
-1~courses.txt
-2~rooms.txt
-3~student-course-details.txt
-4~student-course.txt
-5~students.txt
-6~teacher-course-details.txt
-7~teacher-course.txt
-8~teachers.txt
-9~user-type.txt
+id~permission
+1~viewStudents
+2~ad

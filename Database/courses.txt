@@ -1,4 +1,4 @@
-//id~CourseName~Year
+//id~CourseName~Grade
 1~Bio101~1
 2~Bio201~2
 3~Bio301~3
