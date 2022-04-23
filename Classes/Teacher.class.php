@@ -10,7 +10,7 @@
             $this->pass = $pass;
             $this->subject_name = $subject_name;
         }
-
+        
         public function setGrade($subject_name){
             $this->subject_name = $subject_name;
         }
@@ -22,5 +22,6 @@
         public function renderPage(){
 
         }
+        
     }
 ?>
