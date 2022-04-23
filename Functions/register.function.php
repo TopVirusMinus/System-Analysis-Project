@@ -32,5 +32,6 @@
 
         $record .= implode("~", $attribs);
         $users->addRecord($record);
+        header("location:../Controllers/login.control.php");
     }
 ?>    
