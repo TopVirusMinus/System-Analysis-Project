@@ -1,9 +1,5 @@
 //id~usertype~studentName~StudentEmail~Password(md5)~Grade~CumulativeScore
 1~1~Mustafa~mustafa.walid@msa.edu.eg~b2a639fc96da73bc2ea3035cf94a1a9e~1~99
-2~1~Steven~steven.hany@msa.edu.eg~7b78e2e11e39cc273022b4af19aa74fa~1~99
-3~1~Nadeen~nadeen.amgad@msa.edu.eg~73c51c58616c4566cf4baef2f43cc254~2~99
-4~1~Nada~nada.khaled@msa.edu.eg~0958ace8194239d81a95e60d24f224d4~1~99
-5~1~Haidy~haidy.haitham@msa.edu.eg~3778ef45a65d626050422d0ba65cc64e~3~99
 //id~usertype~teacherName~teacherEmail~Password~jobTitle
 6~2~Wael~wael.ed@gmail.com~8a08c8640eff638cad108ab4d4a2436e~Biology
 7~2~Sayed~sayed.ed@gmail.com~401cf1e04f00683fa8a2ac804c9d1065~Math

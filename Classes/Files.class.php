@@ -68,7 +68,8 @@
                 if ($i>=0 && $i !=null)
                 {
                     //echo $keyWord."####".$newline;
-                    fclose($myfile);	
+                    fclose($myfile);
+                    echo $newline;	
                     return $newline;
                 }
             }
@@ -81,18 +82,40 @@
             if (!file_exists($this->destination)) {
                 return 0;
             }		
+            
             $myfile = fopen($this->destination, "a+") or die("Unable to open file!");
 
             //convert file to array of lines
-            $fileArr = file($this->destination);
-            $lastLine = $fileArr[count($fileArr) - 1];
-            $lastLineArr = explode("~", $lastLine);
-            $id = (int)$lastLineArr[0] + 1;
+            $id = strval($this->getLastId() + 1)."~";
+            $id .= $record;
+            $record = $id;
             
-            $recordWithId = $id.$this->separator.$record;
-            fwrite($myfile, $recordWithId."\r\n");
+            fwrite($myfile, $record."\r\n");
             fclose($myfile);
             //echo $recordWithId; 
+        }
+
+        function getLastId()
+        {
+            
+            if ( !file_exists($this->destination) ) {
+               return 0;
+            }		
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            $LastId=0;
+            while(!feof($myfile)) 
+            {
+                  $line= fgets($myfile);
+                  $ArrayLine=explode($this->separator,$line);
+                  
+                  if ($ArrayLine[0]!="")
+                  {
+                    $LastId=$ArrayLine[0];	
+                  }
+                  
+            }
+            return (int)$LastId;	
         }
     }
 ?>
