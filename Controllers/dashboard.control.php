@@ -9,8 +9,8 @@
     print_r($_SESSION);
     $usersFile = new File("../Database/users.txt", "~");
     $currUser = $usersFile->getIdRow($_SESSION["id"]);
-
-    echo "Hello ".$currUser[2];
+    print_r($currUser);
+   // echo "Hello ".$currUser[2];
 
     echo '<table style = "border: 1px solid black;">
         <tr style = "border: 1px solid black;">
