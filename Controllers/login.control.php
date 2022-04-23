@@ -17,5 +17,6 @@
 <a href="register.control.php">Register</a>
 
 <?php
+//s
     require_once "../Views/footer.php";
 ?>

@@ -15,4 +15,7 @@
         $_SESSION["user-type"] = $recordArr[1];
         header("Location: ../Controllers/dashboard.control.php");
     }
+    else{
+        header("Location: ../Controllers/login.control.php");
+    }
 ?>
