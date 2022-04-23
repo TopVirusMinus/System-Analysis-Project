@@ -19,9 +19,19 @@
             return $this->subject_name;
         }
 
+        public function setsubject($subject)
+        {
+            $this->subject_name = $subject;
+        }
+
+        public function getsubject()
+        {
+            return $this->subject_name;
+        }
+
         public function renderPage(){
 
-        }
-        
+        }  
+                    
     }
 ?>
