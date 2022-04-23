@@ -7,11 +7,11 @@
 <br>
 <?php
     require_once "../Classes/Files.class.php";
-    print_r($_SESSION);
+    //print_r($_SESSION);
     $usersFile = new File("../Database/users.txt", "~");
     $currUser = $usersFile->getIdRow($_SESSION["id"]);
     print_r($currUser);
-    echo "Hello ".$currUser[2];
+    //echo "Hello ".$currUser[2];
 
  
 
