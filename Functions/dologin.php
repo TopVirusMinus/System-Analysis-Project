@@ -8,7 +8,9 @@
     $mailCheck = $recordArr[3];
     $passCheck = $recordArr[4];
     //print_r($recordArr);
-
+    echo $passCheck."###".$_POST["Password"];
+    $_POST["Password"] = md5($_POST["Password"]);
+    
     if($mailCheck ==  $_POST["email"] && $passCheck == $_POST["Password"]){
         echo "Login Successful";
         session_start();
@@ -19,6 +21,7 @@
         header("Location: ../Controllers/dashboard.control.php");
     }
     else{
-        header("Location: ../Controllers/login.control.php");
+        //header("Location: ../Controllers/login.control.php");
+        echo "Login unuccessful";
     }
 ?>

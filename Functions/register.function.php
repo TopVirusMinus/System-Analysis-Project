@@ -19,7 +19,6 @@
         print_r($attribs);
         //sorts the record data to start with the main attributes
         $record = "";
-    
         $myfile = fopen($mainAttribs->getDestination(), "r+") or die("Unable to open file!");
         $newline = fgets($myfile);
         $lineArr = explode($mainAttribs->getSeparator(),$newline);
@@ -32,5 +31,20 @@
 
         $record .= implode("~", $attribs);
         $users->addRecord($record);
+        $_POST["id"] = $users->getLastId();
+
+        $merger = new File("../Database/mergable-attribs.txt", "~");
+        $mergeArr = $merger->getAllKeyword(0,$_POST["u-type"]);
+        print_r($mergeArr);
+
+        foreach($mergeArr as $m){
+            $mergeFile = new File($m[3], "~");
+            $firstMerge = $_POST[$m[1]];
+            $secondMerge = $_POST[$m[2]];
+            $record = $firstMerge.$merger->getSeparator().$secondMerge;
+            echo "<br>".$record;
+            $mergeFile->addRecord($record, 0);
+        }
+       header("location:../Controllers/login.control.php");
     }
-?>    
+?>

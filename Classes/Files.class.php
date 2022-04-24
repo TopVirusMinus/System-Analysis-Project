@@ -69,15 +69,14 @@
                 {
                     //echo $keyWord."####".$newline;
                     fclose($myfile);
-                    echo $newline;	
                     return $newline;
                 }
             }
-            fclose($myfile);	
+            fclose($myfile);
             return FALSE;
     }
 
-        public function addRecord($record)
+        public function addRecord($record, $addId = 1)
         {
             if (!file_exists($this->destination)) {
                 return 0;
@@ -86,10 +85,11 @@
             $myfile = fopen($this->destination, "a+") or die("Unable to open file!");
 
             //convert file to array of lines
-            $id = strval($this->getLastId() + 1)."~";
-            $id .= $record;
-            $record = $id;
-            
+            if($addId == 1){
+                $id = strval($this->getLastId() + 1)."~";
+                $id .= $record;
+                $record = $id;
+            }
             fwrite($myfile, $record."\r\n");
             fclose($myfile);
             //echo $recordWithId; 
@@ -116,6 +116,32 @@
                   
             }
             return (int)$LastId;	
+        }
+
+        function getAllKeyword($index, $keyWord)
+        {
+            $allKeywords = array();
+            if (!file_exists($this->destination) ) {
+                return 0;
+            }		
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+
+                if(strlen($line) == 0){
+                    break;
+                }
+
+                if($ArrayLine[$index] == $keyWord)
+                {
+                    array_push($allKeywords,$ArrayLine);    
+                }
+                
+            }
+            return $allKeywords;	
         }
     }
 ?>

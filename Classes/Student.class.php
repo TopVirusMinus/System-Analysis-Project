@@ -5,15 +5,14 @@
     class Student extends Account{
         private $grade = -1;
         private $cumulativeScore = -1;
+        public $record;
 
-        function __construct($id, $name, $email, $pass, $grade, $cumulativeScore){
-            $this->id = $id;
-            $this->name = $name;
-            $this->email = $email;
-            $this->pass = $pass;
-            $this->grade = $grade;
-            $this->CumulativeScore = $cumulativeScore;
-
+        function __construct($record){
+            $this->id = $record[1];
+            $this->name = $record[2];
+            $this->email = $record[3];
+            $this->pass = $record[4];
+            $this->grade = $record[5];
         }
 
         public function setGrade($grade){
@@ -22,6 +21,17 @@
         
         public function getGrade(){
             return $this->grade;
+        }
+        public function getId(){
+            return $this->id;
+        }
+       
+        public function getName(){
+            return $this->name;
+        }
+       
+        public function getEmail(){
+            return $this->email;
         }
 
         public function setCumulativeScore($cumulativeScore){
