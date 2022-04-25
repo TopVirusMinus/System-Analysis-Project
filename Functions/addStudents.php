@@ -7,11 +7,7 @@
     session_start();
 ?>
 <h1>
-<<<<<<< HEAD
     List All Students
-=======
-    List A  ll Students
->>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
 </h1>
 <table border=2 px>
     <tr>

@@ -11,13 +11,8 @@
     $usersFile = new File("../Database/users.txt", "~");
     $currUser = $usersFile->getIdRow($_SESSION["id"]);
 
-<<<<<<< HEAD
     print_r($currUser);
     echo '<br>'.'<h2 style="color: #3C1FFF">Hello '.$currUser[2].'</h2><br>';
-=======
-    //print_r($currUser);
-    echo "<br>"."Hello ".$currUser[2]."<br>";
->>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
 
 
 
