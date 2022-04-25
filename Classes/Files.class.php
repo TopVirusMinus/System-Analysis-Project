@@ -135,12 +135,8 @@
         function getAllKeyword($index, $keyWord)
         {
             $allKeywords = array();
-<<<<<<< HEAD
-            if (!file_exists($this->destination) ) {
-=======
             
             if ( !file_exists($this->destination) ) {
->>>>>>> b3f5098e0d3ce3ae91422c3cffee9377fe8872a7
                 return 0;
             }		
             
