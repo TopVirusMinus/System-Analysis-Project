@@ -10,6 +10,10 @@
     require_once "../Classes/Files.class.php";
     //print_r($_SESSION);
     $usersFile = new File("../Database/users.txt", "~");
+    $currUser = $usersFile->getIdRow($_SESSION["id"]);
+
+    print_r($currUser);
+    echo '<br>'.'<h2 style="color: #3C1FFF">Hello '.$currUser[2].'</h2><br>';
 
     print_r($_SESSION);
     echo '<br>'.'<h2 style="color: #3C1FFF">Hello '.$_SESSION["U-record"][2].'</h2><br>';
