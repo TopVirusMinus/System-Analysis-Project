@@ -71,11 +71,24 @@
                         fclose($myfile);
                     }
                 
+<<<<<<< HEAD
                 }
             }
                 fclose($myfile);
                 return FALSE;
         }
+=======
+                if ($i>=0 && $i !=null)
+                {
+                    //echo $keyWord."####".$newline;
+                    fclose($myfile);
+                    return $newline;
+                }
+            }
+            fclose($myfile);
+            return FALSE;
+    }
+>>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
 
         public function addRecord($record, $addId = 1)
         {
@@ -121,6 +134,10 @@
         function getAllKeyword($index, $keyWord)
         {
             $allKeywords = array();
+<<<<<<< HEAD
+=======
+            if (!file_exists($this->destination) ) {
+>>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
             if ( !file_exists($this->destination) ) {
                 return 0;
             }		
@@ -144,4 +161,5 @@
             return $allKeywords;	
         }
     }
+}
 ?>

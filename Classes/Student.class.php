@@ -5,11 +5,18 @@
     class Student extends Account{
         private $grade = -1;
         private $cumulativeScore = -1;
+<<<<<<< HEAD
         private $Teachers=array();
         private $Courses=array();
 
         function __construct($record){
             $this->id = $record[0];
+=======
+        public $record;
+
+        function __construct($record){
+            $this->id = $record[1];
+>>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
             $this->name = $record[2];
             $this->email = $record[3];
             $this->pass = $record[4];

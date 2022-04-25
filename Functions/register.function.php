@@ -36,12 +36,16 @@
         $users->addRecord($record);
         $_POST["id"] = $users->getLastId();
 
+<<<<<<< HEAD
         //get 2d array of mergable attributes for the current usertype
+=======
+>>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
         $merger = new File("../Database/mergable-attribs.txt", "~");
         $mergeArr = $merger->getAllKeyword(0,$_POST["u-type"]);
         print_r($mergeArr);
 
         foreach($mergeArr as $m){
+<<<<<<< HEAD
             //open the file to merge into
             $mergeFile = new File($m[3], "~");
             //get first mergable attribute
@@ -52,6 +56,13 @@
             $record = $firstMerge.$merger->getSeparator().$secondMerge;
             echo "<br>".$record;
 
+=======
+            $mergeFile = new File($m[3], "~");
+            $firstMerge = $_POST[$m[1]];
+            $secondMerge = $_POST[$m[2]];
+            $record = $firstMerge.$merger->getSeparator().$secondMerge;
+            echo "<br>".$record;
+>>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
             $mergeFile->addRecord($record, 0);
         }
         header("location:../Controllers/login.control.php");
