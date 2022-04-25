@@ -10,8 +10,12 @@
     //print_r($_SESSION);
     $usersFile = new File("../Database/users.txt", "~");
     $currUser = $usersFile->getIdRow($_SESSION["id"]);
+
     //print_r($currUser);
     echo "<br>"."Hello ".$currUser[2]."<br>";
+
+
+
 
     $permissions = new File("../Database/permissions.txt", "~");
     $permArr = $permissions->getAllKeyword(0,$currUser[1]);

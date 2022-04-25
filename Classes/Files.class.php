@@ -39,18 +39,17 @@
             if (!file_exists($this->destination) ) {
                 return 0;
             }		
-             $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-             $LastId=0;
-             
-             while(!feof($myfile)) 
-             {
-                   $newline= fgets($myfile);
-                   $ArrayLine=explode($this->separator,$newline);
-                   if (strval($ArrayLine[0]) == strval($id))
-                   {
-                       fclose($myfile);
-                       return $ArrayLine;	    
-                   }
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            $LastId=0;
+            while(!feof($myfile)) 
+            {
+                $newline= fgets($myfile);
+                $ArrayLine=explode($this->separator,$newline);
+                if (strval($ArrayLine[0]) == strval($id))
+                {
+                    fclose($myfile);
+                    return $ArrayLine;	    
+                }
              }
              return False;
         }
@@ -99,21 +98,20 @@
         {
             
             if ( !file_exists($this->destination) ) {
-               return 0;
+                return 0;
             }		
             
             $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
             $LastId=0;
             while(!feof($myfile)) 
             {
-                  $line= fgets($myfile);
-                  $ArrayLine=explode($this->separator,$line);
-                  
-                  if ($ArrayLine[0]!="")
-                  {
-                    $LastId=$ArrayLine[0];	
-                  }
-                  
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+                
+                if ($ArrayLine[0]!="")
+                {
+                $LastId=$ArrayLine[0];	
+                }
             }
             return (int)$LastId;	
         }
@@ -122,6 +120,7 @@
         {
             $allKeywords = array();
             if (!file_exists($this->destination) ) {
+            if ( !file_exists($this->destination) ) {
                 return 0;
             }		
             
@@ -144,4 +143,5 @@
             return $allKeywords;	
         }
     }
+}
 ?>

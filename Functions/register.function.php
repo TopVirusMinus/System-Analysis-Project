@@ -45,6 +45,6 @@
             echo "<br>".$record;
             $mergeFile->addRecord($record, 0);
         }
-       header("location:../Controllers/login.control.php");
+        header("location:../Controllers/login.control.php");
     }
 ?>
