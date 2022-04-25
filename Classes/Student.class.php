@@ -5,10 +5,11 @@
     class Student extends Account{
         private $grade = -1;
         private $cumulativeScore = -1;
-        public $record;
+        private $Teachers=array();
+        private $Courses=array();
 
         function __construct($record){
-            $this->id = $record[1];
+            $this->id = $record[0];
             $this->name = $record[2];
             $this->email = $record[3];
             $this->pass = $record[4];
@@ -17,6 +18,30 @@
 
         public function setGrade($grade){
             $this->grade = $grade;
+        }
+
+        public function setSingleTeacher($Teacher){
+            array_push($this->Teachers, $Teacher);
+        }
+        public function setSingleCourse($Courses){
+            array_push($this->Courses, $Courses);
+        }
+
+        public function getSingleTeacher($index){
+            if($index < count($this->Teachers)){
+                return $this->Teachers[$index];
+            }
+            else{
+                echo "Teacher index out of range";
+            }
+        }
+        public function getSingleCourse($index){
+            if($index < count($this->Courses)){
+                return $this->Courses[$index];
+            }
+            else{
+                echo "Course index out of range";
+            }
         }
         
         public function getGrade(){
