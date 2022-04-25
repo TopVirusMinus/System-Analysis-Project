@@ -14,10 +14,10 @@
     if($mailCheck ==  $_POST["email"] && $passCheck == $_POST["Password"]){
         echo "Login Successful";
         session_start();
-        
-        //saves userId and type in a session
-        $_SESSION["id"] = $recordArr[0];
-        $_SESSION["user-type"] = $recordArr[1];
+    
+        //saves user record in the session
+        $record = explode("~", $record);
+        $_SESSION["U-record"] = $record;
         header("Location: ../Controllers/dashboard.control.php");
     }
     else{
