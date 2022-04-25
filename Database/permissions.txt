@@ -1,3 +1,4 @@
-id~permission
-1~viewStudents
-2~ad
+userid~permission~text
+2~../Functions/addStudents.php~Add Students
+2~../Functions/addCourse.php~Add Course
+2~../Functions/addGrade.php~Add Grade
