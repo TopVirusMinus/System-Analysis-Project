@@ -5,7 +5,7 @@
     $title = "Dashboard";
     require_once "header.php";
 
-?>  
+?>
 <h1>Schedule</h1>
 <table border=2px>
     <tr>

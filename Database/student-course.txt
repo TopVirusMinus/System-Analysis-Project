@@ -1,2 +1,2 @@
-//studentId~CourseId
+//Id~studentId~CourseId
 1~4~4
