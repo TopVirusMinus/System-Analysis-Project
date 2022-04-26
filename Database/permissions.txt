@@ -1,3 +1,4 @@
+
 userid~permission~text
 2~../Views/manageStudents.php~Manage All Students
 2~../Functions/addGrade.php~Add Grade
