@@ -1,9 +1,18 @@
 <?php
     require_once "MainAttribs.class.php";
+    class Account extends MainAttribs{
+        protected  $email = "";
+        protected  $pass = "";
 
-    abstract class Account extends MainAttribs{
-        private $email = "";
-        private $pass = "";
+        function __construct($record){
+            if($record){
+                $this->id = $record[0];
+                $this->userType = $record[1];
+                $this->name = $record[2];
+                $this->email = $record[3];
+                $this->pass = $record[4];
+            }
+        }
 
         public function setEmail($email){
             $this->email = $email;
@@ -21,8 +30,6 @@
             return $this->pass;
         } 
 
-        
-        abstract protected function renderPage();
     }
 
 ?>

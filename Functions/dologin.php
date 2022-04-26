@@ -7,17 +7,16 @@
     
     $mailCheck = $recordArr[3];
     $passCheck = $recordArr[4];
-    //print_r($recordArr);
-    echo $passCheck."###".$_POST["Password"];
+    print_r($recordArr);
     $_POST["Password"] = md5($_POST["Password"]);
     
-    if($mailCheck ==  $_POST["email"] && $passCheck == $_POST["Password"]){
+    if($mailCheck ==  $_POST["email"] && trim($passCheck) == $_POST["Password"]){
         echo "Login Successful";
         session_start();
-        
-        //saves userId and type in a session
-        $_SESSION["id"] = $recordArr[0];
-        $_SESSION["user-type"] = $recordArr[1];
+    
+        //saves user record in the session
+        $record = explode("~", $record);
+        $_SESSION["U-record"] = $record;
         header("Location: ../Controllers/dashboard.control.php");
     }
     else{

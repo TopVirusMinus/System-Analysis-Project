@@ -3,17 +3,20 @@
     require_once "MainAttribs.class.php";
 
     class Student extends Account{
-        private $grade = -1;
-        private $cumulativeScore = -1;
-        private $Teachers=array();
-        private $Courses=array();
+        protected  $grade = -1;
+        protected  $cumulativeScore = -1;
+        protected  $Teachers=array();
+        protected  $Courses=array();
 
         function __construct($record){
-            $this->id = $record[0];
-            $this->name = $record[2];
-            $this->email = $record[3];
-            $this->pass = $record[4];
-            $this->grade = $record[5];
+            if($record){
+                $this->id = $record[0];
+                $this->userType = $record[1];
+                $this->name = $record[2];
+                $this->email = $record[3];
+                $this->pass = $record[4];
+                $this->grade = $record[5];
+            }
         }
 
         public function setGrade($grade){
@@ -47,17 +50,6 @@
         public function getGrade(){
             return $this->grade;
         }
-        public function getId(){
-            return $this->id;
-        }
-       
-        public function getName(){
-            return $this->name;
-        }
-       
-        public function getEmail(){
-            return $this->email;
-        }
 
         public function setCumulativeScore($cumulativeScore){
             $this->cumulativeScore = $cumulativeScore;
@@ -65,10 +57,6 @@
         
         public function getCumulativeScore(){
             return $this->cumulativeScore;
-        }
-
-        public function renderPage(){
-
         }
     }
 ?>

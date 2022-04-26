@@ -1,7 +1,8 @@
 <?php
 abstract class MainAttribs{
-    private $id = -1;
-    private $name = "";
+    protected  $id = -1;
+    protected  $name = "";
+    protected  $userType = "";
 
     public function setId($id){
         $this->id = $id;
@@ -13,6 +14,14 @@ abstract class MainAttribs{
 
     public function getId(){
         return $this->id;
+    }
+
+    public function setUserType($userType){
+        $this->userType= $userType;
+    }
+
+    public function getUserType(){
+        return $this->userType;
     }
 
     public function getName(){

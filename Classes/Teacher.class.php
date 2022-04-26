@@ -27,11 +27,6 @@
         public function getsubject()
         {
             return $this->subject_name;
-        }
-
-        public function renderPage(){
-
-        }  
-                    
+        }            
     }
 ?>

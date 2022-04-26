@@ -55,6 +55,10 @@
         }
 
         public function getRowKeyword($keyWord){
+            if (!file_exists($this->destination)) {
+                return 0;
+            }		
+            
             $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
 
             while(!feof($myfile)) 
@@ -77,7 +81,26 @@
                 return FALSE;
         }
 
-        public function addRecord($record, $addId = 1)
+        public function getAllRecords(){
+            if (!file_exists($this->destination)) {
+                return 0;
+            }		
+            $allKeywords = array();
+
+            $myfile = fopen($this->destination, "a+") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                $line = fgets($myfile);
+                $ArrayLine = explode($this->separator, $line);
+
+                if(is_numeric($ArrayLine[0])){
+                    array_push($allKeywords, $ArrayLine);    
+                }
+            }
+            return $allKeywords;
+        }
+
+        public function addRecord($record, $addId = 1, $allowRepetition=1)
         {
             if (!file_exists($this->destination)) {
                 return 0;
@@ -91,8 +114,22 @@
                 $id .= $record;
                 $record = $id;
             }
+            // if($allowRepetition == 0){
+            //     while(!feof($myfile)){
+            //         $line= fgets($myfile);
+            //         $Arrayline=explode($this->separator,$line);
+            //         $record = explode($this->separator, $record);
+
+            //         echo $Arrayline[0]." ".$record[0];
+            //         if ($Arrayline[0] == $record[0]){
+            //             return false;
+            //         }
+            //     }
+            //     $record = implode($this->separator, $record);
+            // }
             fwrite($myfile, $record."\r\n");
             fclose($myfile);
+            return true;
             //echo $recordWithId; 
         }
 
@@ -112,7 +149,7 @@
                 
                 if ($ArrayLine[0]!="")
                 {
-                $LastId=$ArrayLine[0];	
+                    $LastId=$ArrayLine[0];	
                 }
             }
             return (int)$LastId;	
@@ -136,7 +173,7 @@
                     break;
                 }
 
-                if($ArrayLine[$index] == $keyWord)
+                if($index < count($ArrayLine) and $ArrayLine[$index] == $keyWord)
                 {
                     array_push($allKeywords,$ArrayLine);    
                 }
@@ -144,6 +181,28 @@
             }
             return $allKeywords;	
         }
-    }
 
+        function deleteRecordbyId($id){
+            if (!file_exists($this->destination) ) {
+                return 0;
+            }
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            
+            while(!feof($myfile)) 
+            {
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+                if (strval($ArrayLine[0]) == strval($id))
+                {
+                    $content = file_get_contents($this->destination);
+                    $content = str_replace($line,"",$content);
+                    file_put_contents($this->destination,$content);
+                    fclose($myfile);
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 ?>
