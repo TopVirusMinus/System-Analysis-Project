@@ -135,7 +135,8 @@
         function getAllKeyword($index, $keyWord)
         {
             $allKeywords = array();
-            if (!file_exists($this->destination) ) {
+            
+            if ( !file_exists($this->destination) ) {
                 return 0;
             }		
             
