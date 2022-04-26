@@ -48,16 +48,9 @@
         //display the content in table
         for($i=0;$i<count($studentsObjArray);$i++)
         {
-<<<<<<< HEAD
             echo '<tr><td>'.$studentsObjArray[$i]->getName().'</td><td>'.$studentsObjArray[$i]->getEmail().'</td><td>'.$studentsObjArray[$i]->getGrade().'</td><td><a href="addCourseToStudent.php?studentId='.$studentsObjArray[$i]->getId().'&teacherId='.$teacherRecord[0].'">Add</a></td></tr>';
         }
         ?>
-=======
-            echo "<tr><td>".$studentsObjArray[$i]->getName()."</td><td>".$studentsObjArray[$i]->getEmail()."</td><td>".$studentsObjArray[$i]->getGrade()."</td><td><a href=del.php?id=".$studentsObjArray[$i]->id.">Add</a></td></tr>";
-        }
-        ?>
-    <!-- ? dh 3l4an el get -->
->>>>>>> 4f31476f73973a39791dd1ad6dc0d03bd3908b71
 </table>
 
 <?php 
