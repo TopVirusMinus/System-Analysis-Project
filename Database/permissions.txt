@@ -1,4 +1,5 @@
 userid~permission~text
 2~../Views/manageStudents.php~Manage All Students
-2~../Functions/addCourse.php~Add Course
 2~../Functions/addGrade.php~Add Grade
+1~../Views/viewSchedule.php~View Schedule
+3~../Views/manageUsers.php~Manage All Users

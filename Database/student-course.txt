@@ -1,3 +1,2 @@
-    //studentId~CourseId
-    Array
-    1~4
+//studentId~CourseId
+1~4~4

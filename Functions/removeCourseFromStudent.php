@@ -1,7 +1,7 @@
 <?php
     require_once "../Classes/Files.class.php";
     print_r($_GET);
-   echo  "<br>";
+    echo  "<br>";
     //get student id from url
     $studentId = $_GET["studentId"];
 
