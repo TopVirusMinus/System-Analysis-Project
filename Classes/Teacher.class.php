@@ -1,6 +1,8 @@
 <?php
-    require_once "Person.interface.php";
-    class Teacher extends Account{
+    require_once "Account.class.php";
+    require_once "IShowTable.interface.php";
+
+    class Teacher extends Account implements IShowTable{
         private $subject_name = "";
 
         function __construct($id, $name, $email, $pass, $subject_name){
@@ -27,11 +29,16 @@
         public function getsubject()
         {
             return $this->subject_name;
+        }            
+
+        public function showTable(){
+            echo"<table border=2 px>";
+            echo "<tr>";
+            //$key contains an attribute each loop
+            foreach($this as $key => $value){
+                echo '<td>Teacher '.$key.'</td>';
+            }
+            echo "</tr>";
         }
-
-        public function renderPage(){
-
-        }  
-                    
     }
 ?>

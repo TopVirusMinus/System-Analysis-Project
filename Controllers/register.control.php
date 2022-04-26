@@ -21,8 +21,9 @@
 
                 /* creates a button with name 'user-type' & value "id of the user" and
                    the content of the button is the name of the user */
-
-                echo '<button type="submit" name="user-type" value="'.$newline[0].'">'.$newline[1].'</button>';
+                if($i != 3){
+                    echo '<button type="submit" name="user-type" value="'.$newline[0].'">'.$newline[1].'</button>';
+                }
             }
         ?>
         <br>
