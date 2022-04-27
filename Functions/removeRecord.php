@@ -9,7 +9,7 @@
     $File = new File(trim($_GET["destination"]), "~"); 
     print_r(trim($File->getDestination()));
     //get course record from course name
-    $File->deleteRecordbyId($id);
+    $File->deleteRecordbyKeyword($_GET["index"],$id);
 
     header("location:".$_GET["source"]);
 ?>

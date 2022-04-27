@@ -78,7 +78,7 @@
         $filteredstudent_course = $student_course_File->getAllKeyword(2,$teacherCourseId); 
         $studentFile = new File("../Database/users.txt", "~");
         print_r($filteredstudent_course);
-        $filteredstudents = $studentFile->getAllKeyword(5,trim($filteredstudent_course[1]));
+        $filteredstudents = $studentFile->getAllKeyword(5,$filteredstudent_course[1]);
 
         
         //convert record to student object and fill it in array $studentsObjArray
@@ -93,7 +93,7 @@
         //display the content in table
         for($i=0;$i<count($studentsObjArray);$i++)
         {
-            echo '<tr><td>'.$studentsObjArray[$i]->getId().'</td><td>'.$studentsObjArray[$i]->getEmail().'</td><td>'.$studentsObjArray[$i]->getGrade().'</td><td><a href="../Functions/removeRecord.php?source=../Views/manageStudents.php&destination=../Database/student-course.txt&id='.$studentsObjArray[$i]->getId().'">Remove</a></td></tr>';
+            echo '<tr><td>'.$studentsObjArray[$i]->getId().'</td><td>'.$studentsObjArray[$i]->getName().'</td><td>'.$studentsObjArray[$i]->getEmail().'</td><td>'.$studentsObjArray[$i]->getGrade().'</td><td><a href="../Functions/removeRecord.php?source=../Views/manageStudents.php&destination=../Database/student-course.txt&index=1&id='.$studentsObjArray[$i]->getId().'">Remove</a></td></tr>';
         }
         ?>
 </table>

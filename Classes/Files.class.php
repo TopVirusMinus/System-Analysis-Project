@@ -204,7 +204,7 @@
                     echo "<td>".$arrayline[$i]."</td>";   
                 }
                 if($ctLine < count($arrayline) - 1){
-                    echo '<td><a href="../Functions/removeRecord.php?source='.$source.'&destination='.$destination.'&id='.$arrayline[0].'">Remove</a></td>';
+                    echo '<td><a href="../Functions/removeRecord.php?source='.$source.'&destination='.$destination.'&index=0&id='.$arrayline[0].'">Remove</a></td>';
                     echo '<td><a href="../Views/updateRecordView.php?source='.$source.'&destination='.$destination.'&id='.$arrayline[0].'">Update</a></td>';
                     echo "</tr>";
                 }
@@ -225,6 +225,28 @@
                 $line= fgets($myfile);
                 $ArrayLine=explode($this->separator,$line);
                 if (strval($ArrayLine[0]) == strval($id))
+                {
+                    $content = file_get_contents($this->destination);
+                    $content = str_replace($line,"",$content);
+                    file_put_contents($this->destination,$content);
+                    fclose($myfile);
+                    return true;
+                }
+            }
+            return false;
+        }
+        function deleteRecordbyKeyword($index, $keyword){
+            if (!file_exists($this->destination) ) {
+                return 0;
+            }
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            
+            while(!feof($myfile)) 
+            {
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+                if ($ArrayLine[$index] == $keyword)
                 {
                     $content = file_get_contents($this->destination);
                     $content = str_replace($line,"",$content);
