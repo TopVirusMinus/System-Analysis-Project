@@ -1,6 +1,5 @@
+//id~job title
 1~Bilogy
 2~Maths
 3~Chemistry
 4~English
-5~Arabic
-6~Physics
