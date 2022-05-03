@@ -1,7 +1,7 @@
 <?php
-    require_once "MainAttribs.class.php";
-    class Course extends MainAttribs{
-        private $year = -1;
+    require_once "Account.class.php";
+    class Course extends Account{
+        protected $year = -1;
 
         function __construct($id, $name, $year)
         {

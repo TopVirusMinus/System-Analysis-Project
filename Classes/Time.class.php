@@ -1,7 +1,7 @@
 <?php
     class Time{
-        private $hour = -1;
-        private $minute = -1;
+        protected $hour = -1;
+        protected $minute = -1;
 
         function __construct($hour, $minute)
         {

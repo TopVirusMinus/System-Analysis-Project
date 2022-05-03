@@ -1,8 +1,8 @@
 <?php
-    require_once "MainAttribs.class.php";
+    require_once "Account.class.php";
 
-    class Room extends MainAttribs{
-        private $isLab = false;
+    class Room extends Account{
+        protected $isLab = false;
         function __construct($id, $name, $isLab)
         {
             $this->id = $id;

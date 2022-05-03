@@ -3,8 +3,8 @@
     require_once "IShowTable.interface.php";
 
     class Teacher extends Account implements IShowTable{
-        private $subject_name = "";
-
+        protected $subject_name = "";
+        
         function __construct($id, $name, $email, $pass, $subject_name){
             $this->id = $id;
             $this->name = $name;

@@ -1,8 +1,8 @@
 <?php
     class Date{
-        private $day = '';
-        private $month = "";
-        private $year = 0;
+        protected $day = '';
+        protected $month = "";
+        protected $year = 0;
 
         function __construct($day, $month, $year)
         {
