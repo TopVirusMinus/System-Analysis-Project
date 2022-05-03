@@ -1,5 +1,6 @@
 //id~usertype~studentName~StudentEmail~Password(md5)~Grade~CumulativeScore
 //id~usertype~teacherName~teacherEmail~Password~jobTitle
-5~2~sasa~mwmma5000@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
 6~3~admin~admin@gmail.com~202cb962ac59075b964b07152d234b70
-4~1~thefen~thfn@gmail.com~202cb962ac59075b964b07152d234b70~1
+5~1~zizo~zizo@gmail.com~202cb962ac59075b964b07152d234b70~1
+4~1~thfn~thfn@gmail.com~202cb962ac59075b964b07152d234b70~1
+1~2~sas~mwmma5000@gmail.com~202cb962ac59075b964b07152d234b70~MTH101

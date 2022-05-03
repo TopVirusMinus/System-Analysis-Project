@@ -1,4 +1,5 @@
 <?php
+    echo '<a href="../Controllers   /dashboard.control.php">Return to dashboard</a><br>';
     require_once "../Classes/Files.class.php";
     $path    = '../Database/';
     $files = scandir($path);

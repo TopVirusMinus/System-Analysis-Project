@@ -1,7 +1,7 @@
 <?php
     Class File{
-        private $destination = "";
-        private $separator = "";
+        protected $destination = "";
+        protected $separator = "";
 
         public function __construct($destination, $separator)
         {
@@ -219,6 +219,28 @@
                 $line= fgets($myfile);
                 $ArrayLine=explode($this->separator,$line);
                 if (strval($ArrayLine[0]) == strval($id))
+                {
+                    $content = file_get_contents($this->destination);
+                    $content = str_replace($line,"",$content);
+                    file_put_contents($this->destination,$content);
+                    fclose($myfile);
+                    return true;
+                }
+            }
+            return false;
+        }
+        function deleteRecordbyKeyword($index, $keyword){
+            if (!file_exists($this->destination) ) {
+                return 0;
+            }
+            
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            
+            while(!feof($myfile)) 
+            {
+                $line= fgets($myfile);
+                $ArrayLine=explode($this->separator,$line);
+                if ($ArrayLine[$index] == $keyword)
                 {
                     $content = file_get_contents($this->destination);
                     $content = str_replace($line,"",$content);

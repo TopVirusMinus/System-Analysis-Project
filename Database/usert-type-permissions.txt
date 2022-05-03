@@ -1,3 +1,0 @@
-usertype~permissionId
-1~
-2~
