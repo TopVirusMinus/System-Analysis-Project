@@ -55,6 +55,10 @@
         }
 
         public function getRowKeyword($keyWord){
+            if (!file_exists($this->destination)) {
+                return 0;
+            }		
+            
             $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
 
             while(!feof($myfile)) 
@@ -77,6 +81,45 @@
                 return FALSE;
         }
 
+        public function getAllRecords(){
+            if (!file_exists($this->destination)) {
+                return 0;
+            }		
+            $allKeywords = array();
+
+            $myfile = fopen($this->destination, "a+") or die("Unable to open file!");
+            while(!feof($myfile)) 
+            {
+                $line = fgets($myfile);
+                $ArrayLine = explode($this->separator, $line);
+
+                if(is_numeric($ArrayLine[0])){
+                    array_push($allKeywords, $ArrayLine);    
+                }
+            }
+            return $allKeywords;
+        }
+        public function displayAllUserTable(){
+
+            $allRecords = $this->getAllRecords();
+            $userObjArray = array();
+            foreach($allRecords as $a){
+                print_r($a);
+                $userRecord = $this->getIdRow($a[0]);
+                if($userRecord[1] != 3){
+                    $user = new Account($userRecord);
+                    array_push($userObjArray, $user);
+                }
+            }
+
+            //display the content in table
+            for($i=0;$i<count($userObjArray);$i++)
+            {
+                echo '<tr><td>'.$userObjArray[$i]->getId().'</td><td>'.$userObjArray[$i]->getUserType().'</td><td>'.$userObjArray[$i]->getName().'</td><td>'.$userObjArray[$i]->getEmail().'</td><td>'.$userObjArray[$i]->getPass().'</td><td><a href="../Functions/removeRecord.php?source=../Views/manageUsers.php&destination=../Database/users.txt&id='.$userObjArray[$i]->getId().'">Remove</a><td><a href="../Views/updateRecordView.php?id='.$userObjArray[$i]->getId().'">Update</a></td></tr>';
+            }
+            echo "</table>";
+        }
+
         public function addRecord($record, $addId = 1, $allowRepetition=1)
         {
             if (!file_exists($this->destination)) {
@@ -91,19 +134,7 @@
                 $id .= $record;
                 $record = $id;
             }
-            // if($allowRepetition == 0){
-            //     while(!feof($myfile)){
-            //         $line= fgets($myfile);
-            //         $Arrayline=explode($this->separator,$line);
-            //         $record = explode($this->separator, $record);
 
-            //         echo $Arrayline[0]." ".$record[0];
-            //         if ($Arrayline[0] == $record[0]){
-            //             return false;
-            //         }
-            //     }
-            //     $record = implode($this->separator, $record);
-            // }
             fwrite($myfile, $record."\r\n");
             fclose($myfile);
             return true;
@@ -159,6 +190,23 @@
             return $allKeywords;	
         }
 
+        function drawtablefromfile()
+        {
+            $myfile=fopen($this->destination,"r+")or die ("unable to open the file!");
+            while(!feof($myfile))
+            {
+                $line=fgets($myfile);
+                $arrayline=explode($this->separator,$line);
+                echo "<tr>";
+                for($i=0;$i<count($arrayline);$i++)
+                {
+                    echo "<td>".$arrayline[$i]."</td>";
+                }
+                echo "</tr>";
+            }
+            fclose($myfile); 
+        }
+        
         function deleteRecordbyId($id){
             if (!file_exists($this->destination) ) {
                 return 0;

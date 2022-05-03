@@ -19,7 +19,7 @@
     $courseId = $courseRecord[0];
     
     $student_course_record = $studentId."~".$courseId;
-    $studentCourseFile->addRecord($student_course_record, 0);
+    $studentCourseFile->addRecord($student_course_record);
 
     header("location:../Views/manageStudents.php");
 ?>
