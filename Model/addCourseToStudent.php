@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "../Classes/Files.class.php";
+    require_once "../Controllers/Files.class.php";
     print_r($_GET);
     
     //extract url queries to variables
@@ -9,7 +9,7 @@
 
     //open files
     $studentCourseFile = new File("../Database/student-course.txt", "~");
-    $CourseFile = new File("../Database/courses.txt", "~");
+    $CourseFile = new File("../Database/courses.txt");
 
     //get course record from course name
     $courseRecord = $CourseFile->getRowKeyword(trim($_SESSION["U-record"][5]));
@@ -19,7 +19,7 @@
     $courseId = $courseRecord[0];
     
     $student_course_record = $studentId."~".$courseId;
-    $studentCourseFile->addRecord($student_course_record, 0);
+    $studentCourseFile->addRecord($student_course_record);
 
     header("location:../Views/manageStudents.php");
 ?>

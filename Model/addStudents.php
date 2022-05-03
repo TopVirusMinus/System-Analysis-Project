@@ -55,5 +55,5 @@
 
 <?php 
     require_once "../Views/footer.php";
-    echo '<br><a href="../Controllers/dashboard.control.php">Return to dashboard</a>';
+    echo '<br><a href="../Views/dashboard.view.php">Return to dashboard</a>';
 ?>

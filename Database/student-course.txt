@@ -1,3 +1,5 @@
-//studentId~CourseId
-Array
-1~4
+//id~studentId~CourseId
+2~4~4
+4~5~4
+5~4~13
+6~5~13

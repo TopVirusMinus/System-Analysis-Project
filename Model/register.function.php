@@ -1,13 +1,13 @@
 <?php
-    require_once "../Classes/Files.class.php";
+    require_once "../Controllers/Files.class.php";
     
     //appends the post request's elements in a string (record)
     function createUser($attribs){
         foreach($attribs as $a){
             echo $a."<br>";
         }
-        $mainAttribs = new File("../Database/mainAttribs.txt", "~");
-        $users = new File("../Database/users.txt", "~");
+        $mainAttribs = new File("../Database/mainAttribs.txt");
+        $users = new File("../Database/users.txt");
 
         //hashes password using md5 hash
         $attribs['Password'] = md5($attribs['Password']);
@@ -37,13 +37,13 @@
         $_POST["id"] = $users->getLastId();
 
         //get 2d array of mergable attributes for the current usertype
-        $merger = new File("../Database/mergable-attribs.txt", "~");
+        $merger = new File("../Database/mergable-attribs.txt");
         $mergeArr = $merger->getAllKeyword(0,$_POST["u-type"]);
         print_r($mergeArr);
 
         foreach($mergeArr as $m){
             //open the file to merge into
-            $mergeFile = new File($m[3], "~");
+            $mergeFile = new File($m[3]);
             //get first mergable attribute
             $firstMerge = $_POST[$m[1]];
             //get Second mergable attribute            
@@ -54,6 +54,6 @@
 
             $mergeFile->addRecord($record, 0);
         }
-        header("location:../Controllers/login.control.php");
+        header("location:../Views/login.view.php");
     }
 ?>

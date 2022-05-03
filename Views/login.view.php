@@ -3,7 +3,7 @@
     require_once "../Views/header.php";
 ?> 
 
-<form action="../Functions/dologin.php" method="POST">
+<form action="../Model/dologin.php" method="POST">
     <input type="email" required name="email" placeholder="Enter Email" id="">
     <br>
     <br>
@@ -14,8 +14,9 @@
 </form>
 <br>
 <span>Dont have an account?</span>
-<a href="register.control.php">Register</a>
+<a href="register.view.php">Register</a>
+
 
 <?php
-    require_once "../Views/footer.php";
+require_once "../Views/footer.php";
 ?>
