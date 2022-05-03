@@ -205,7 +205,7 @@
                 }
                 if( $ctLine < count($arrayline) - 1){
                     echo '<td><a href="../Model/removeRecord.php?source='.$source.'&destination='.$destination.'&index=0&id='.$arrayline[0].'">Remove</a></td>';
-                    echo '<td><a href="../Model/updateRecordFunction.php?source='.$source.'&destination='.$destination.'&id='.$arrayline[0].'">Update</a></td>';
+                    echo '<td><a href="../Views/updateRecordView.php?source='.$source.'&destination='.$destination.'&id='.$arrayline[0].'">Update</a></td>';
                     echo "</tr>";
                 }
                 
