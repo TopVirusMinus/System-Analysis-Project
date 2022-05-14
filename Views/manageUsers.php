@@ -14,8 +14,8 @@
                 <td>User email</td>
                 <td>User password</td>
             </tr>";
-        require_once "../Controllers/Files.class.php";
-        require_once "../Controllers/Student.class.php";
+        require_once "../Model/Classes/Files.class.php";
+        require_once "../Model/Classes/Student.class.php";
         
         $userFile = new File("../Database/users.txt");
         $userFile->displayAllUserTable();

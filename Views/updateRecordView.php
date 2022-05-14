@@ -1,7 +1,7 @@
 <?php
     print_r($_GET);
     echo "<br>";
-    require_once "../Controllers/Files.class.php";
+    require_once "../Model/Classes/Files.class.php";
     echo '<form action="../Model/updateRecordFunction.php?destination='.$_GET["destination"].'&source='.$_GET["source"].'" method="POST">';
     
     //get user record from id
