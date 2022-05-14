@@ -5,6 +5,7 @@
 
         public function __construct($destination, $separator = "~")
         {
+            $destination = trim($destination);
             $this->destination = $destination;
             $this->separator = $separator;
         }
@@ -36,6 +37,7 @@
 
         public function getIdRow($id)
         {
+            $id = trim($id);
             if (!file_exists($this->destination) ) {
                 return 0;
             }		
@@ -54,7 +56,8 @@
              return False;
         }
 
-        public function getRowKeyword($keyWord){
+        public function getRowKeyword($keyWord, $index = -1){
+            $keyWord = trim($keyWord);
             if (!file_exists($this->destination)) {
                 return 0;
             }		
@@ -68,14 +71,22 @@
                 $newlineArr = explode($this->separator, $newline);
 
                 //check if keyword exists in one of the $newlineArr cells
-                foreach($newlineArr as $n){
+                if($index == -1){
+                    foreach($newlineArr as $n){
                     //echo $n;
-                    if($n == $keyWord){
-                        return $newline;
-                        fclose($myfile);
+                        if($n == $keyWord){
+                            fclose($myfile);
+                            return $newlineArr;
+                        }
                     }
-                
                 }
+                else{
+                    if($newlineArr[$index] == $keyWord){
+                        fclose($myfile);
+                        return $newlineArr;
+                    }
+                }
+                
             }
                 fclose($myfile);
                 return FALSE;
@@ -120,8 +131,10 @@
             echo "</table>";
         }
 
+
         public function addRecord($record, $addId = 1, $allowRepetition=1)
         {
+            $record = trim($record);
             if (!file_exists($this->destination)) {
                 return 0;
             }		
@@ -143,7 +156,6 @@
 
         function getLastId()
         {
-            
             if ( !file_exists($this->destination) ) {
                 return 0;
             }		
@@ -165,6 +177,7 @@
 
         function getAllKeyword($index, $keyWord)
         {
+            $keyWord = trim($keyWord);
             $allKeywords = array();
             
             if ( !file_exists($this->destination) ) {
@@ -194,6 +207,7 @@
         {
             $myfile=fopen($this->destination,"r+")or die ("unable to open the file!");
             $ctLine = 0;
+            echo '<table border="2px">';
             while(!feof($myfile))
             {
                 $line=fgets($myfile);
@@ -214,9 +228,77 @@
             echo '<br>';
             echo '<br>';
             fclose($myfile); 
+            echo "</table>";
         }
         
+        // function drawtablefromfile($source, $excludeRows, $index,$keyWord="", ...$CRUD)
+        // {
+        //     $source = trim($source);
+        //     $myfile=fopen($this->destination,"r+")or die ("unable to open the file!");
+        //     $ctLine = 0;
+        //     echo '<table border=2px>';
+        //     if($index == -1){
+        //         while(!feof($myfile))
+        //         {
+        //             $line=fgets($myfile);
+        //             $arrayline=explode($this->separator,$line);
+        //             echo "<tr>";
+        //             for($i=0;$i<count($arrayline);$i++)
+        //             {
+        //                 if(count($excludeRows) == 0){
+        //                     echo "<td>".$arrayline[$i]."</td>";
+        //                 }
+        //                 else if(!in_array($i, $excludeRows)){
+        //                     echo "<td>".$arrayline[$i]."</td>";
+        //                 }
+                        
+        //             }
+        //             if( $ctLine < count($arrayline) - 1){
+        //                 if($remove == 1){
+        //                     echo '<td><a href="../Model/removeRecord.php?source='.$source.'&destination='.$this->destination.'&index=0&id='.$arrayline[0].'">Remove</a></td>';
+        //                 }
+        //                 if($update == 1){
+        //                     echo '<td><a href="../Views/updateRecordView.php?source='.$source.'&destination='.$this->destination.'&id='.$arrayline[0].'">Update</a></td>';
+        //                 }
+        //                 echo "</tr>";
+        //             }
+                    
+        //         }
+        //         echo "</table>";
+        //     }
+        //     else{
+        //         $line=fgets($myfile);
+        //         $arrayline=explode($this->separator,$line);
+        //         $criteria = $this->getAllKeyword($index, $keyWord);
+        //         print_r($criteria);
+        //         print_r($arrayline);
+                
+        //         for($j = 0; $j < count($criteria[0]);$j++){
+        //             if(!in_array($j, $excludeRows)){
+        //                 echo "<td>".$arrayline[$j]."</td>";
+        //             }
+        //         }
+        //         echo "</tr>";
+        //         foreach($criteria as $c){
+        //             for($j = 0; $j < count($c);$j++){
+        //                 if(!in_array($j, $excludeRows)){
+        //                     echo "<td>".$c[$j]."</td>";
+        //                 }
+        //             }
+        //             echo "</tr>";
+        //         }
+
+        //     }
+        //     if($add == 1){
+        //         echo '<td><a href="../Views/addRecordView.php?source='.$source.'&destination='.$this->destination.'">Add</a></td>';
+        //     }
+        //     echo '<br>';
+        //     echo '<br>';
+        //     fclose($myfile); 
+        // }
+        
         function deleteRecordbyId($id){
+            $id = trim($id);
             if (!file_exists($this->destination) ) {
                 return 0;
             }
@@ -238,7 +320,10 @@
             }
             return false;
         }
+
         function deleteRecordbyKeyword($index, $keyword){
+            $keyword = trim($keyword);
+
             if (!file_exists($this->destination) ) {
                 return 0;
             }
