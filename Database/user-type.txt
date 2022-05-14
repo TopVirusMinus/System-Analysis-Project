@@ -1,4 +1,4 @@
-//typeCode~typeName
-1~Student
-2~Teacher
-3~Admin
+//usertypeId~typeName~classLocation
+1~Student~../Model/Classes/Student.class.php
+2~Teacher~../Model/Classes/Teacher.class.php
+3~Account~../Model/Classes/Account.class.php
