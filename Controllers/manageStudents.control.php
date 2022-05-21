@@ -9,6 +9,7 @@
     require_once $_SESSION["classLocation"];
     require_once "../Views/showStudents.php";
     require_once ("../Model/Classes/GetAllKeyword.php");
+    require_once "../Views/showPaidStudents.php";
 
     $userObj = unserialize($_SESSION["userObject"]);
     print_r($userObj);
@@ -16,13 +17,23 @@
     
 
     //Encapsulate it to a model function
-    echo '<h1>List All Students In Grade '.$userObj->getCourse()->getYear().'</h1>';
+    echo '<h1>All Paid Students In Grade '.$userObj->getCourse()->getYear().'</h1>';
     $students = new File("../Database/users.txt");
     $students->setGetFromFile(new GetAllKeyword());
     $showMe = $students->executeget(5, $userObj->getCourse()->getYear());
     print_r($students);
+    $sameGradeStudents = $students->executeget(5, $userObj->getCourse()->getYear());
+    
+    $paidStudents = array();
+    foreach($sameGradeStudents as $s){
+        if($s[6] != -1){
+            array_push($paidStudents,$s);
+        }
+    }
 
-    showAllStudentsTable($showMe, $userObj->getId());
+    
+
+    showAllPaidStudentsTable($paidStudents, $userObj->getId());
 
     //$students 
     //$students = new File("../Database/users.txt");

@@ -1,12 +1,12 @@
-//id~usertype~studentName~StudentEmail~Password(md5)~Grade~CumulativeScore
+//id~usertype~studentName~StudentEmail~Password(md5)~Grade~Paid
 //id~usertype~teacherName~teacherEmail~Password~jobTitle
 1~2~kamel~kamel@gmail.com~202cb962ac59075b964b07152d234b70~PHY201
 2~2~sa3d~sa3d@gmail.com~202cb962ac59075b964b07152d234b70~AR101
 3~2~sas~mwmma5000@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
-4~1~thfn~thfn@gmail.com~202cb962ac59075b964b07152d234b70~1
-5~1~zizo~zizo@gmail.com~202cb962ac59075b964b07152d234b70~1
+4~1~thfn~thfn@gmail.com~202cb962ac59075b964b07152d234b70~1~1
+5~1~zizo~zizo@gmail.com~202cb962ac59075b964b07152d234b70~1~3
 6~3~admin~admin@gmail.com~202cb962ac59075b964b07152d234b70
-7~1~sambosa~sambosa@gmail.com~202cb962ac59075b964b07152d234b70~2
+7~1~sambosa~sambosa@gmail.com~202cb962ac59075b964b07152d234b70~2~2
 8~2~Hossam~hosso@gmail.com~202cb962ac59075b964b07152d234b70~PHY101
 9~1~Ramy~ramy@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
 10~1~Nada~nada.khaled22@msa.edu.eg~202cb962ac59075b964b07152d234b70~MTH101

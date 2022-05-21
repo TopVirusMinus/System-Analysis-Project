@@ -51,7 +51,26 @@
             return count(file($this->destination));
         }
 
-        
+        public function getIdRow($id)
+        {   
+            $id = trim($id);
+            if (!file_exists($this->destination) ) {
+                return 0;
+            }		
+            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
+            $LastId=0;
+            while(!feof($myfile)) 
+            {
+                $newline= fgets($myfile);
+                $ArrayLine=explode($this->separator,$newline);
+                if (strval($ArrayLine[0]) == strval($id))
+                {
+                    fclose($myfile);
+                    return $ArrayLine;	    
+                }
+             }
+             return array();
+        }
 
         
         public function displayAllUserTable(){
@@ -222,6 +241,17 @@
             return false;
         }
 
+        function updateRecord($id){
+            $data = file('test.txt'); // reads an array of lines
+            function replace_a_line($data) {
+            if (stristr($data, 'thfn')) {
+                return "2,sayed\n";
+            }
+            return $data;
+            }
+            $data = array_map('replace_a_line',$data);
+            file_put_contents('test.txt', implode('', $data));
+        }
         function deleteRecordbyKeyword($index, $keyword){
             $keyword = trim($keyword);
 

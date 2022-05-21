@@ -1,14 +1,15 @@
 <?php
     require_once ("IGetFromFile.interface.php");
     class getRowKeyword implements IGetFromFile{
-	function get($listpfparam) {
+
+    function get($listpfparam) {
         $keyWord = trim($listpfparam[2]);
         $index = -1;
         print_r($listpfparam);
         if (!file_exists($listpfparam[0])) {
             return 0;
-        }		
-        
+
+        }
         $myfile = fopen($listpfparam[0], "r+") or die("Unable to open file!");
 
         while(!feof($myfile)) 
@@ -33,7 +34,6 @@
                     return $newlineArr;
                 }
             }
-            
         }
             fclose($myfile);
             return FALSE;

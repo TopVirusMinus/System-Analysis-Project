@@ -28,7 +28,6 @@
         
         //convert object to encoded string using serialize to be later deserialized
         $_SESSION["userObject"] = serialize($userObj);
-
         echo "<br>";
         echo "<br>";
         print_r($_SESSION);
