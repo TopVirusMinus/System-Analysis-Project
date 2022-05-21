@@ -86,6 +86,10 @@
                 </tr>
             ";
             echo '<h1>My Students</h1>';
+
+
+             //separate
+
              //populate current teacher's students array
              $student_course_File = new File("../Database/student-course.txt");
              $studentFile = new File("../Database/users.txt");

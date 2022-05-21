@@ -8,6 +8,8 @@
         protected  $grade = -1;
         protected  $cumulativeScore = -1;
         protected  $Courses=array();
+        protected $isPaid = false;
+        protected $IPayMethod;
 
         function __construct($record){
             if($record){
@@ -26,6 +28,29 @@
                     array_push($this->Courses, $courseObj);
                 }
             }
+        }
+        
+        public function getAllCourses(){
+            $student_courseFile = new File("../Database/student-course.txt");
+            $courseFile = new File("../Database/courses.txt");
+            $studentCourseRecord = $student_courseFile->getAllKeyword(1, $this->id);
+            $myCourses  = array();
+            //print_r($studentCourseRecord);
+
+            foreach($studentCourseRecord as $scr){
+                $courseRecord = $courseFile->getIdRow($scr[2]);
+                array_push($myCourses, $courseRecord);
+            }
+
+            return $myCourses;
+
+        }
+
+        public function setPayMethod($PayMethod){
+            $this->IPayMethod = $PayMethod;
+        }
+        public function getPayMethod(){
+            return $this->IPayMethod;
         }
         
         public function getAllCourses(){
