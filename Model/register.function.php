@@ -1,5 +1,5 @@
 <?php
-    require_once "../Controllers/Files.class.php";
+    require_once "../Model/Classes/Files.class.php";
     
     //appends the post request's elements in a string (record)
     function createUser($attribs){
@@ -54,6 +54,6 @@
 
             $mergeFile->addRecord($record, 0);
         }
-        header("location:../Views/login.view.php");
+        header("location:../Controllers/login.control.php");
     }
 ?>

@@ -4,10 +4,10 @@
     require_once "../Views/header.php";
 ?>
 
-<form action="register.view.php" method="post">
+<form action="register.control.php" method="post">
         <?php
             //includes file class
-            require_once "../Controllers/Files.class.php";
+            require_once "../Model/Classes/Files.class.php";
 
             //file 'f' that points to user-type file, with a separator '~'
             $f = new File("../Database/user-type.txt");
@@ -30,7 +30,7 @@
         <br>
 </form>
 
-<form action="register.view.php" method="post">
+<form action="register.control.php" method="post">
     <?php
         $f = new File("../Database/user-login-attribs-perms.txt");
         
@@ -72,7 +72,7 @@
 <br>
 <br>
 <span>Have an account?</span>
-<a href="login.view.php">Sign in</a></body>
+<a href="../Controllers/login.control.php">Sign in</a></body>
 
 <?php
     //includes footer and body, html closed tags

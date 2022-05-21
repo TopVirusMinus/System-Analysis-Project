@@ -14,7 +14,7 @@
 </form>
 <br>
 <span>Dont have an account?</span>
-<a href="register.view.php">Register</a>
+<a href="register.control.php">Register</a>
 
 
 <?php

@@ -16,8 +16,8 @@
         <td>Student Grade</td>
     </tr>
     <?php
-        require_once "../Classes/Files.class.php";
-        require_once "../Classes/Student.class.php";
+        require_once "../Model/Classes/Files.class.php";
+        require_once "../Model/Classes/Student.class.php";
         $studentFile = new File("../Database/users.txt", "~");
         $teacherFile = new File("../Database/users.txt", "~");
         $courseFile = new File("../Database/courses.txt", "~");
@@ -27,14 +27,13 @@
         $course = $teacherRecord[5];
 
         //get course record from course database
-        $courseRecord = $courseFile->getRowKeyword(trim($course));
+        $courseRecord = $courseFile->getRowKeyword($course);
 
         //get course year from course database
-        $courseRecord = explode("~",$courseRecord);
         $courseYear = $courseRecord[2];
 
         //get all students with course year = student year
-        $filteredstudents = $studentFile->getAllKeyword(5,trim($courseYear));
+        $filteredstudents = $studentFile->getAllKeyword(5,$courseYear);
         //print_r($filteredstudents);
         
 
@@ -55,5 +54,5 @@
 
 <?php 
     require_once "../Views/footer.php";
-    echo '<br><a href="../Views/dashboard.view.php">Return to dashboard</a>';
+    echo '<br><a href="../Controllers/dashboard.control.php">Return to dashboard</a>';
 ?>

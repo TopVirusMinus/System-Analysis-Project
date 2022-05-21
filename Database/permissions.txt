@@ -1,5 +1,5 @@
 userid~permission~text
-2~../Views/manageStudents.php~Manage All Students
+2~../Controllers/manageStudents.control.php~Manage All Students
 2~../Model/addGrade.php~Add Grade
 1~../Views/viewSchedule.php~View Schedule
-3~../Views/manageFiles.php~Manage Files
+3~../Controllers/manageFiles.control.php~Manage Files

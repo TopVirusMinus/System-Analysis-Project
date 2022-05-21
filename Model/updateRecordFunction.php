@@ -1,8 +1,11 @@
 <?php
-    require_once "../Controllers/Files.class.php";
+    require_once "../Model/Classes/Files.class.php";
     $userFile = new File($_GET["destination"]);
 
     print_r($_GET);
+    echo "<br>";
+    echo "<br>";
+    print_r($_POST);
 
     //convert record string to array
     $recordArr = explode("~", $_POST["newRecord"]);

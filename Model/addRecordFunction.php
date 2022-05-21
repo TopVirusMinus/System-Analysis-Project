@@ -1,5 +1,5 @@
 <?php
-    require_once "../Controllers/Files.class.php";
+    require_once "../Model/Classes/Files.class.php";
     $userFile = new File($_GET["destination"], "~");
 
     print_r($_GET);
