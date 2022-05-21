@@ -1,6 +1,8 @@
 <?php
     require_once "Account.class.php";
     require_once "Files.class.php";
+    require_once "GetidRow.class.php";
+    require_once "GetRowKeyword.class.php";
     require_once "../Database/teacher-course.txt";
     class Course{
         protected $year = -1;
@@ -9,14 +11,21 @@
 
         function __construct($record)
         {
+            echo "<br>";
+            echo "<br>";
+            echo "zfttttt";
+            print_r($record);
+            echo "zfttttt";
             $this->id = $record[0];
             $this->name = $record[1];
             $this->year= $record[2];
             
             $course_roomFile = new File("../Database/course-room.txt");
-            $courseRoomRecord = $course_roomFile->getRowKeyword($this->id, 1);
+            $course_roomFile->setGetFromFile(new GetRowKeyword());
+            $courseRoomRecord = $course_roomFile->executeget($this->id, 1);
             $roomFile = new File("../Database/rooms.txt");
-            $roomRecord = $roomFile->getIdRow($courseRoomRecord[2]);
+            $roomFile->setGetFromFile(new GetidRow());
+            $roomRecord = $roomFile->executeget($courseRoomRecord[2]);
             echo "<br>";
             print_r($this->id);
             echo "<br>";

@@ -18,24 +18,33 @@
     <?php
         require_once "../Model/Classes/Files.class.php";
         require_once "../Model/Classes/Student.class.php";
+        require_once "../Model/Classes/GetFile.class.php";
+        require_once "../Model/Classes/GetAllKeyword.php";
+        require_once "../Model/Classes/GetidRow.class.php";
+        require_once "../Model/Classes/GetRowKeyword.class.php";
         $studentFile = new File("../Database/users.txt", "~");
+        $studentFile->setGetFromFile(new GetAllKeyword());
         $teacherFile = new File("../Database/users.txt", "~");
+        $teacherFile->setGetFromFile(new GetidRow());
         $courseFile = new File("../Database/courses.txt", "~");
-
-        //get course from curr teacher's database
-        $teacherRecord = $teacherFile->getIdRow($_SESSION["id"]);
-        $course = $teacherRecord[5];
-
-        //get course record from course database
-        $courseRecord = $courseFile->getRowKeyword($course);
-
-        //get course year from course database
-        $courseYear = $courseRecord[2];
-
-        //get all students with course year = student year
-        $filteredstudents = $studentFile->getAllKeyword(5,$courseYear);
-        //print_r($filteredstudents);
+        $courseFile->setGetFromFile(new GetRowKeyword());
         
+        //get course from curr teacher's database
+        $teacherRecord = $teacherFile->executeget($_SESSION["id"]);
+        print_r($teacherRecord);
+        echo "mm".$_SESSION["id"];
+        //get course record from course database
+        $course = $teacherRecord[5];
+        $courseRecord = $courseFile->executeget($course);
+        
+        //get course year from course database
+        
+        //get all students with course year = student year
+        $index = "5";
+        $array  = array_map('intval', str_split($index));
+        $courseYear = $courseRecord[2];
+        $filteredstudents = $studentFile->executeget($array[0],$courseYear);
+        //print_r($filteredstudents);
 
         //convert record to student object and fill it in array $studentsObjArray
         $studentsObjArray = array();

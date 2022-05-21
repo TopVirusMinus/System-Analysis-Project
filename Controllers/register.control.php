@@ -8,17 +8,16 @@
         <?php
             //includes file class
             require_once "../Model/Classes/Files.class.php";
-
+            require_once "../Model/Classes/GetidRow.class.php";
             //file 'f' that points to user-type file, with a separator '~'
-            $f = new File("../Database/user-type.txt");
-
+            $f = new File("../Database/user-type.txt","~");
+            $f->setGetFromFile(new GetidRow());
             //loops until i == file-newline-size
             for($i = 1; $i < $f->count();$i++){
-
                 //gets an array of user-type with the id 'i'
                 // e.g [1, student] for i = 1, [2, teacher] for i == 2
-                $newline = $f->getIdRow($i);
-
+                $newline = $f->executeget($i);
+                
                 /* creates a button with name 'user-type' & value "id of the user" and
                    the content of the button is the name of the user */
                 if($i != 3){
@@ -32,8 +31,8 @@
 
 <form action="register.control.php" method="post">
     <?php
-        $f = new File("../Database/user-login-attribs-perms.txt");
-        
+        $f = new File("../Database/user-login-attribs-perms.txt","~");
+        $f->setGetFromFile(new GetidRow());
         //checks if we clicked on a button (in the first form)
         if(isset($_POST['user-type'])){
             //puts the content of signup-main.php in a form <see cref="DoSomething" />
@@ -41,8 +40,7 @@
 
 
             //$newline = array of specific attributes per user
-
-            $newline = $f->getIdRow($_POST['user-type']);
+            $newline = $f->executeget($_POST['user-type']);
             if($newline){
                 for($i = 2; $i<count($newline); $i++){
                     //generate input fields with the attribute name and type from the text file

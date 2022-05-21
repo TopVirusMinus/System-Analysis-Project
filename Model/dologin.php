@@ -1,9 +1,11 @@
 <?php
     require_once "../Model/Classes/Files.class.php";
+    require_once "../Model/Classes/GetRowKeyword.class.php";
+    require_once "../Model/Classes/GetidRow.class.php";
     //header('Location: ../Controllers/login.control.php');
     $userFile = new File("../Database/users.txt", "~");
-    $record = $userFile->getRowKeyword($_POST["email"]);
-    
+    $userFile->setGetFromFile(new GetRowKeyword());
+    $record = $userFile->executeget($_POST["email"]);
     $mailCheck = $record[3];
     $passCheck = $record[4];
     $_POST["Password"] = md5($_POST["Password"]);
@@ -13,7 +15,9 @@
 
         //get the user type and the class name of the user
         $userTypeFile = new File("../Database/user-type.txt");
-        $userTypeRecord = $userTypeFile->getIdRow($record[1]);
+        $userTypeFile->setGetFromFile(new GetidRow());
+        $userTypeRecord = $userTypeFile->executeget($record[1]);
+        
         print_r($record);
         echo "<br>";
         echo "<br>";

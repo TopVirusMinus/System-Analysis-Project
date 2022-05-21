@@ -1,13 +1,29 @@
 <?php
+    require_once "GetAllKeyword.php";
+    require_once "Getallrecord.class.php";
+    require_once "GetidRow.class.php";
+    require_once "Getlastid.class.php";
+    require_once "GetRowKeyword.class.php";
     Class File{
         protected $destination = "";
         protected $separator = "";
-
+        protected $GetFromFile;
         public function __construct($destination, $separator = "~")
         {
             $destination = trim($destination);
             $this->destination = $destination;
             $this->separator = $separator;
+        }
+        public function executeget(...$listofparam){
+            array_unshift($listofparam,$this->destination,$this->separator);
+            //print_r($listofparam);
+            return $this->GetFromFile->get($listofparam);
+        }
+        public function setGetFromFile($GetFromFile){
+            $this->GetFromFile = $GetFromFile;
+        }
+        public function getGetFromFile(){
+            return $this->GetFromFile;
         }
 
         public function setDestination($destination)
@@ -35,88 +51,17 @@
             return count(file($this->destination));
         }
 
-        public function getIdRow($id)
-        {
-            $id = trim($id);
-            if (!file_exists($this->destination) ) {
-                return 0;
-            }		
-            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-            $LastId=0;
-            while(!feof($myfile)) 
-            {
-                $newline= fgets($myfile);
-                $ArrayLine=explode($this->separator,$newline);
-                if (strval($ArrayLine[0]) == strval($id))
-                {
-                    fclose($myfile);
-                    return $ArrayLine;	    
-                }
-             }
-             return False;
-        }
+        
 
-        public function getRowKeyword($keyWord, $index = -1){
-            $keyWord = trim($keyWord);
-            if (!file_exists($this->destination)) {
-                return 0;
-            }		
-            
-            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-
-            while(!feof($myfile)) 
-            {
-                //convert each record to array $newlineArr
-                $newline=fgets($myfile);
-                $newlineArr = explode($this->separator, $newline);
-
-                //check if keyword exists in one of the $newlineArr cells
-                if($index == -1){
-                    foreach($newlineArr as $n){
-                    //echo $n;
-                        if($n == $keyWord){
-                            fclose($myfile);
-                            return $newlineArr;
-                        }
-                    }
-                }
-                else{
-                    if($newlineArr[$index] == $keyWord){
-                        fclose($myfile);
-                        return $newlineArr;
-                    }
-                }
-                
-            }
-                fclose($myfile);
-                return FALSE;
-        }
-
-        public function getAllRecords(){
-            if (!file_exists($this->destination)) {
-                return 0;
-            }		
-            $allKeywords = array();
-
-            $myfile = fopen($this->destination, "a+") or die("Unable to open file!");
-            while(!feof($myfile)) 
-            {
-                $line = fgets($myfile);
-                $ArrayLine = explode($this->separator, $line);
-
-                if(is_numeric($ArrayLine[0])){
-                    array_push($allKeywords, $ArrayLine);    
-                }
-            }
-            return $allKeywords;
-        }
+        
         public function displayAllUserTable(){
-
-            $allRecords = $this->getAllRecords();
+            $this->setGetFromFile(new GetAllKeyword());
+            $allRecords = $this->executeget();
             $userObjArray = array();
             foreach($allRecords as $a){
                 print_r($a);
-                $userRecord = $this->getIdRow($a[0]);
+                $this->setGetFromFile(new GetidRow());
+                $userRecord = $this->executeget($a[0]);
                 if($userRecord[1] != 3){
                     $user = new Account($userRecord);
                     array_push($userObjArray, $user);
@@ -143,7 +88,8 @@
 
             //convert file to array of lines
             if($addId == 1){
-                $id = strval($this->getLastId() + 1)."~";
+                $this->setGetFromFile(new Getlastid());
+                $id = strval($this->executeget() + 1)."~";
                 $id .= $record;
                 $record = $id;
             }
@@ -154,54 +100,9 @@
             //echo $recordWithId; 
         }
 
-        function getLastId()
-        {
-            if ( !file_exists($this->destination) ) {
-                return 0;
-            }		
-            
-            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-            $LastId=0;
-            while(!feof($myfile)) 
-            {
-                $line= fgets($myfile);
-                $ArrayLine=explode($this->separator,$line);
-                
-                if ($ArrayLine[0]!="")
-                {
-                    $LastId=$ArrayLine[0];	
-                }
-            }
-            return (int)$LastId;	
-        }
+        
 
-        function getAllKeyword($index, $keyWord)
-        {
-            $keyWord = trim($keyWord);
-            $allKeywords = array();
-            
-            if ( !file_exists($this->destination) ) {
-                return 0;
-            }		
-            
-            $myfile = fopen($this->destination, "r+") or die("Unable to open file!");
-            while(!feof($myfile)) 
-            {
-                $line= fgets($myfile);
-                $ArrayLine=explode($this->separator,$line);
-
-                if(strlen($line) == 0){
-                    break;
-                }
-
-                if($index < count($ArrayLine) and $ArrayLine[$index] == $keyWord)
-                {
-                    array_push($allKeywords,$ArrayLine);    
-                }
-                
-            }
-            return $allKeywords;	
-        }
+        
 
         function drawtablefromfile($source, $destination)
         {

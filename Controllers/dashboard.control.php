@@ -19,7 +19,8 @@
 
 
     $permissions = new File("../Database/permissions.txt");
-    $permArr = $permissions->getAllKeyword(0,$UserObj->getUserType());
+    $permissions->setGetFromFile(new GetAllKeyword());
+    $permArr = $permissions->executeget(0,$UserObj->getUserType());
     
     echo "<br>";
     generateLinks($permArr);

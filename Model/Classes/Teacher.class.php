@@ -4,6 +4,10 @@
     require_once "Files.class.php";
     require_once "Student.class.php";
     require_once "Course.class.php";
+    require_once "GetAllKeyword.php";
+    require_once "GetidRow.class.php";
+    require_once "GetRowKeyword.class.php";
+    require_once "GetAllKeyword.php";
     class Teacher extends Account implements IShowTable{
         protected $course;
         protected $myStudents = [];
@@ -17,7 +21,9 @@
 
             //add course object to teacher
             $courseFile = new File("../Database/courses.txt");
-            $courseRecord = $courseFile->getRowKeyword($record[5]);
+            $courseFile->setGetFromFile(new GetRowKeyword());
+            $courseRecord = $courseFile->executeget($record[5]);
+
             $this->course = new Course($courseRecord);
         
             //$this->fillStudents();
@@ -27,10 +33,11 @@
             //populate current teacher's students array
             $student_course_File = new File("../Database/student-course.txt");
             $studentFile = new File("../Database/users.txt");
-
+            $student_course_File->setGetFromFile(new GetAllKeyword());
             //get all students that have the same id as the teacher's from student-course.txt
-            $filteredstudent_course = $student_course_File->getAllKeyword(2,$this->course->getId()); 
+            $filteredstudent_course = $student_course_File->executeget(2,$this->course->getId()); 
             $studentFile = new File("../Database/users.txt");
+            $studentFile->setGetFromFile(new GetidRow());
             print_r($filteredstudent_course);
             echo "<br>";
             echo "<br>";
@@ -38,7 +45,7 @@
             
             //convert record to student object and fill it in array $studentsObjArray
             foreach($filteredstudent_course as $a){
-                $studentRecord = $studentFile->getIdRow($a[1]);
+                $studentRecord = $studentFile->executeget($a[1]);
                 $student = new Student($studentRecord);
                 print_r($student);
                 array_push($this->myStudents, $student);
@@ -93,14 +100,15 @@
              //populate current teacher's students array
              $student_course_File = new File("../Database/student-course.txt");
              $studentFile = new File("../Database/users.txt");
- 
+            $student_course_File->setGetFromFile(new GetAllKeyword());
+            $studentFile->setGetFromFile(new GetidRow());
              //get all students that have the same id as the teacher's from student-course.txt
-             $filteredstudent_course = $student_course_File->getAllKeyword(2,$this->course->getId()); 
-             $studentFile = new File("../Database/users.txt");
+             $filteredstudent_course = $student_course_File->executeget(2,$this->course->getId()); 
+             
              
              //convert record to student object and fill it in array $studentsObjArray
              foreach($filteredstudent_course as $a){
-                $studentRecord = $studentFile->getIdRow($a[1]);
+                $studentRecord = $studentFile->executeget($a[1]);
                 //print_r($studentRecord);
                 echo '<tr><td>'.$studentRecord[0].'</td>.<td>'.$studentRecord[2].'</td><td>'.$studentRecord[3].'</td><td>'.$studentRecord[5].'</td>';
                 if($add == 1){

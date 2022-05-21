@@ -1,6 +1,7 @@
 <?php
     require_once "../Model/Classes/Files.class.php";
-    
+    require_once "../Model/Classes/Getlastid.class.php";
+    require_once "../Model/Classes/GetAllKeyword.php";
     //appends the post request's elements in a string (record)
     function createUser($attribs){
         foreach($attribs as $a){
@@ -34,11 +35,13 @@
         //convert attribs arr to string and add to users file
         $record .= implode("~", $attribs);
         $users->addRecord($record);
-        $_POST["id"] = $users->getLastId();
+        $users->setGetFromFile(new Getlastid());
+        $_POST["id"] = $users->executeget();
 
         //get 2d array of mergable attributes for the current usertype
         $merger = new File("../Database/mergable-attribs.txt");
-        $mergeArr = $merger->getAllKeyword(0,$_POST["u-type"]);
+        $merger->setGetFromFile(new GetAllKeyword());
+        $mergeArr = $merger->executeget(0,$_POST["u-type"]);
         print_r($mergeArr);
 
         foreach($mergeArr as $m){
