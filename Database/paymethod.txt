@@ -1,0 +1,4 @@
+ID~Pay Method Name~Pay Method Function
+1~Pay By Fawry~../Model/Classes/PayByFawry.class.php~
+2~Pay By Bank~../Model/Classes/PayByBank.class.php~PayByBank
+3~Pay By Cheque~../Model/Classes/PayByCheque.class.php~PayByCheque
