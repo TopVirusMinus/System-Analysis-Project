@@ -8,6 +8,8 @@
         protected  $grade = -1;
         protected  $cumulativeScore = -1;
         protected  $Courses=array();
+        protected $isPaid = false;
+        protected $IPayMethod;
 
         function __construct($record){
             if($record){
@@ -26,6 +28,13 @@
                     array_push($this->Courses, $courseObj);
                 }
             }
+        }
+
+        public function setPayMethod($PayMethod){
+            $this->IPayMethod = $PayMethod;
+        }
+        public function getPayMethod(){
+            return $this->IPayMethod;
         }
         
         public function getAllCourses(){

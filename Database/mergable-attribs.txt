@@ -1,2 +1,2 @@
-usertype~attrib1~attrib2~fileLocation
+User Type~Attrib1~Attrib2~File Location
 2~id~jobTitle~../Database/teacher-course.txt

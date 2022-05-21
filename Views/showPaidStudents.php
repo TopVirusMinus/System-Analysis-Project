@@ -1,5 +1,5 @@
 <?php
-    function showAllStudentsTable($recordArr, $id){
+    function showAllPaidStudentsTable($recordArr, $id){
         echo "<table border=2px>";
         echo "
         <tr>

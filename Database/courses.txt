@@ -1,4 +1,4 @@
-//id~CourseName~Grade
+ID~Course Name~Grade
 1~Bio101~1
 2~Bio201~2
 4~MTH101~1
@@ -16,4 +16,4 @@
 17~PHY201~2
 14~AR211~2
 18~PHY331~3
-3~Bio301~3
+3~Bio302~3

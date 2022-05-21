@@ -36,7 +36,7 @@
         }
 
         public function getIdRow($id)
-        {
+        {   
             $id = trim($id);
             if (!file_exists($this->destination) ) {
                 return 0;
@@ -53,7 +53,7 @@
                     return $ArrayLine;	    
                 }
              }
-             return False;
+             return array();
         }
 
         public function getRowKeyword($keyWord, $index = -1){
@@ -321,6 +321,17 @@
             return false;
         }
 
+        function updateRecord($id){
+            $data = file('test.txt'); // reads an array of lines
+            function replace_a_line($data) {
+            if (stristr($data, 'thfn')) {
+                return "2,sayed\n";
+            }
+            return $data;
+            }
+            $data = array_map('replace_a_line',$data);
+            file_put_contents('test.txt', implode('', $data));
+        }
         function deleteRecordbyKeyword($index, $keyword){
             $keyword = trim($keyword);
 

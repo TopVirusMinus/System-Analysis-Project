@@ -3,3 +3,4 @@ userid~permission~text
 2~../Model/addGrade.php~Add Grade
 1~../Views/viewSchedule.php~View Schedule
 3~../Controllers/manageFiles.control.php~Manage Files
+1~../Controllers/payMethod.control.php~Pay Fees
