@@ -1,5 +1,5 @@
 <?php
-    function showAllPaidStudentsTable($recordArr, $id){
+function showAllPaidStudentsTable($recordArr, $id){
         echo "<table border=2px>";
         echo "
         <tr>
@@ -18,8 +18,6 @@
             echo '<td>'.$record[3].'</td>';
             echo '<td>'.$record[4].'</td>';
             echo '<td><a href="../Model/addCourseToStudent.php?studentId='.$record[0].'&teacherId='.$id.'">Add</a></td></td></tr>';
-        }    
+        }
         echo "</table>";
     }
-
-?>

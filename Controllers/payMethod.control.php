@@ -18,7 +18,6 @@
 
     $paymthds = new File("../Database/paymethod.txt");
     $AllPayMethods2D = $paymthds->getAllRecords();
-    
     payMethodView($AllPayMethods2D);
 
 ?>
