@@ -24,7 +24,6 @@
         {
             return $this->destination;
         }
-
         public function getSeparator()
         {
             return $this->separator;
@@ -86,7 +85,6 @@
                         return $newlineArr;
                     }
                 }
-                
             }
                 fclose($myfile);
                 return FALSE;

@@ -5,9 +5,9 @@
     require_once "Course.class.php";
 
     class Student extends Account implements IShowTable{
-        protected  $grade = -1;
-        protected  $cumulativeScore = -1;
-        protected  $Courses=array();
+        protected $grade = -1;
+        protected $cumulativeScore = -1;
+        protected $Courses=array();
         protected $isPaid = false;
         protected $IPayMethod;
 
@@ -33,7 +33,7 @@
         public function setPayMethod($PayMethod){
             $this->IPayMethod = $PayMethod;
         }
-        public function getPayMethod(){
+        public function getPayMethod(){ 
             return $this->IPayMethod;
         }
         

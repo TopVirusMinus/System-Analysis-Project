@@ -3,6 +3,8 @@
     
     //appends the post request's elements in a string (record)
     function createUser($attribs){
+        print_r($attribs);
+
         foreach($attribs as $a){
             echo $a."<br>";
         }
@@ -54,6 +56,6 @@
 
             $mergeFile->addRecord($record, 0);
         }
-        header("location:../Controllers/login.control.php");
+        //header("location:../Controllers/login.control.php");
     }
 ?>
