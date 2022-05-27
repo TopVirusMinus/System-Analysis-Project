@@ -8,5 +8,10 @@
 6~3~admin~admin@gmail.com~202cb962ac59075b964b07152d234b70
 7~1~sambosa~sambosa@gmail.com~202cb962ac59075b964b07152d234b70~2~2
 8~2~Hossam~hosso@gmail.com~202cb962ac59075b964b07152d234b70~PHY101
-9~1~steven hany~stevenhany96@gmail.com~202cb962ac59075b964b07152d234b70~1
-10~2~hany~hanysaad@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
+10~1~Nada~nada.khaled22@msa.edu.eg~202cb962ac59075b964b07152d234b70~MTH101
+11~1~ahmed~ahmed@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
+12~2~hany~hany@gmail.com~202cb962ac59075b964b07152d234b70~PHY201
+13~1~ali~ali@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
+9~1~Ramy~ramy@gmail.com~202cb962ac59075b964b07152d234b70~MTH101
+19~2~nasr~nasr@gmail.com~202cb962ac59075b964b07152d234b70~AR101
+18~1~farag~farag@gmail.com~202cb962ac59075b964b07152d234b70~1~3

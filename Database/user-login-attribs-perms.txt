@@ -1,3 +1,0 @@
- //userid~inputType~attributeName
-1~text~grade
-2~text~jobTitle

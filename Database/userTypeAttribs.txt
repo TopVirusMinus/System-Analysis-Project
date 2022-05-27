@@ -1,0 +1,3 @@
+ //usertype~classLocation~className
+1~../Model/Classes/StudentRegister.class.php~StudentRegister
+2~../Model/Classes/TeacherRegister.class.php~TeacherRegister

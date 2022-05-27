@@ -1,5 +1,6 @@
 <?php
     session_start();
+    echo '<a href="../Model/dologout.php">Log out</a>';
     echo "<br>";
     $title = "Dashboard";
     require_once "header.php";
@@ -10,10 +11,9 @@
 <?php
     require_once $_SESSION["classLocation"];
     require_once "../Model/Classes/Files.class.php";
-    $userObj = unserialize($_SESSION["userObject"]);
-    print_r($userObj);
+    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
 
-    $userObj->showTable();
+    $UserObj->showTable();
 ?>
 </table>
 

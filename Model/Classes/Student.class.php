@@ -3,6 +3,11 @@
     require_once "IShowTable.interface.php";
     require_once "Files.class.php";
     require_once "Course.class.php";
+    require_once "GetAllKeyword.php";
+    require_once "Getallrecord.class.php";
+    require_once "GetidRow.class.php";
+    require_once "Getlastid.class.php";
+    require_once "GetRowKeyword.class.php";
 
     class Student extends Account implements IShowTable{
         protected $grade = -1;
@@ -19,15 +24,36 @@
                 $this->email = $record[3];
                 $this->pass = $record[4];
                 $this->grade = $record[5];
-                
+                echo "<br>";
+                echo "<br>";
                 $courses = $this->getAllCourses();
-                //print_r($courses);    
+                print_r($courses);    
 
                 foreach($courses as $c){
                     $courseObj = new Course($c);
                     array_push($this->Courses, $courseObj);
                 }
             }
+        }
+        
+        public function getAllCourses(){
+            $student_courseFile = new File("../Database/student-course.txt");
+            $courseFile = new File("../Database/courses.txt");
+            $courseFile->setIGetFromFile(new GetidRow());
+            $student_courseFile->setIGetFromFile(new GetAllKeyword());
+            $studentCourseRecord = $student_courseFile->executeget(1, $this->id);
+            $myCourses  = array();
+            //print_r($studentCourseRecord);
+            //print_r($studentCourseRecord);
+            foreach($studentCourseRecord as $scr){
+                $courseRecord = $courseFile->executeget($scr[2]);
+                //print_r($courseRecord);
+                array_push($myCourses, $courseRecord);
+            }
+            //print_r($myCourses);
+
+            return $myCourses;
+
         }
 
         public function setPayMethod($PayMethod){
@@ -37,22 +63,6 @@
             return $this->IPayMethod;
         }
         
-        public function getAllCourses(){
-            $student_courseFile = new File("../Database/student-course.txt");
-            $courseFile = new File("../Database/courses.txt");
-            $studentCourseRecord = $student_courseFile->getAllKeyword(1, $this->id);
-            $myCourses  = array();
-            //print_r($studentCourseRecord);
-
-            foreach($studentCourseRecord as $scr){
-                $courseRecord = $courseFile->getIdRow($scr[2]);
-                array_push($myCourses, $courseRecord);
-            }
-
-            return $myCourses;
-
-        }
-
         public function setGrade($grade){
             $this->grade = $grade;
         }
@@ -101,6 +111,7 @@
                     <td>Course Room</td>
                 </tr>
             ";
+            print_r($this->Courses);
             foreach($this->Courses as $c){
                 echo '<tr><td>'.$c->getName().'</td><td>'.$c->getRoom().'</td></tr>';
             }

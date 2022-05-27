@@ -1,4 +1,5 @@
 //teacherId~CourseId
 2~MTH101
 8~PHY101
+12~PHY201
 10~MTH101

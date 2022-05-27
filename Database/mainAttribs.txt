@@ -1,1 +1,1 @@
-Usertype~Username~Email~Password
+u-type~uname~email~Password
