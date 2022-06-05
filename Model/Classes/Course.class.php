@@ -11,9 +11,9 @@
 
         function __construct($record)
         {
-            echo "<br>";
-            echo "<br>";
-            print_r($record);
+            //echo "<br>";
+            //echo "<br>";
+            //print_r($record);
             $this->id = $record[0];
             $this->name = $record[1];
             $this->year= $record[2];
@@ -24,10 +24,10 @@
             $roomFile = new File("../Database/rooms.txt");
             $roomFile->setIGetFromFile(new GetidRow());
             $roomRecord = $roomFile->executeget($courseRoomRecord[2]);
-            echo "<br>";
-            print_r($this->id);
-            echo "<br>";
-            print_r($courseRoomRecord);
+            //echo "<br>";
+            //print_r($this->id);
+            //echo "<br>";
+            //print_r($courseRoomRecord);
             $this->room = $roomRecord[1];
         }
 
