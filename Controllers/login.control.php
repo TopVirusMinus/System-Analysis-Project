@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    session_unset();
+    session_destroy();
     $title = "Login";
     require_once "../Views/header.php";
 ?> 

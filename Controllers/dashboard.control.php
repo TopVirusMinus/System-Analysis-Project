@@ -1,5 +1,11 @@
 <?php
     session_start();
+    if (empty($_SESSION)){
+        echo "You need to login to view the dashboard! <br>";
+        echo '<a href="login.control.php">Login</a>';
+        exit;
+    }
+
     $title = "Dashboard";
     require "../Views/header.php";
     echo '<a href="../Model/dologout.php">Log out</a>'

@@ -1,5 +1,18 @@
 <?php 
     session_start();
+
+    if (empty($_SESSION)){
+        echo "You need to login as teacher to view this page! <br>";
+        echo '<a href="login.control.php">Login</a>';
+        exit;
+    }
+    
+    if($_SESSION['record'][1] != 2){
+        echo "You need to login as teacher to view this dashboard! <br>";
+        echo '<a href="../Model/dologout.php">Log out</a>';
+        exit;
+    }
+
     //print_r($_SESSION);
     $title = "Add Students";
     require_once "../Views/header.php";
