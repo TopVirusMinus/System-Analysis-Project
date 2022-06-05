@@ -16,6 +16,7 @@
         }
         public function executeget(...$listofparam){
             array_unshift($listofparam,$this->destination,$this->separator);
+            //echo("execute get");
             //print_r($listofparam);
             return $this->IGetFromFile->get($listofparam);
         }

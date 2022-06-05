@@ -11,7 +11,7 @@
 <?php
     require_once $_SESSION["classLocation"];
     require_once "../Model/Classes/Files.class.php";
-    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+    $UserObj = new $_SESSION["className"]($_SESSION["record"]);
 
     $UserObj->showTable();
 ?>

@@ -17,6 +17,7 @@
         protected $IPayMethod;
 
         function __construct($record){
+            
             if($record){
                 $this->id = $record[0];
                 $this->userType = $record[1];
@@ -24,10 +25,10 @@
                 $this->email = $record[3];
                 $this->pass = $record[4];
                 $this->grade = $record[5];
-                echo "<br>";
-                echo "<br>";
+                //echo "<br>";
+                //echo "<br>";
                 $courses = $this->getAllCourses();
-                print_r($courses);    
+                //print_r($courses);    
 
                 foreach($courses as $c){
                     $courseObj = new Course($c);

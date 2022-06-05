@@ -10,10 +10,12 @@
     require_once $_SESSION["classLocation"];
     require_once "../Model/Classes/Files.class.php";
     require_once "../Views/permissionLinkView.php";
-
-    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
-
     print_r($_SESSION);
+
+
+    $UserObj = new $_SESSION["className"]($_SESSION["record"]);
+
+    
     echo '<br>'.'<h2 style="color: #3C1FFF">Hello '.$UserObj->getName().'</h2><br>';
 
 

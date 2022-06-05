@@ -11,6 +11,5 @@
             array_push($fileArr, $file);
         }
         return $fileArr;
-    }
-    
+    }  
 ?>
