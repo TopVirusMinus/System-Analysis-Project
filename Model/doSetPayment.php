@@ -5,7 +5,7 @@ require_once "../Model/Classes/PayByFawry.class.php";
 require_once $_GET["location"];
 require_once "../Model/Classes/OriginalCost.class.php";
 
-$UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+$UserObj = new $_SESSION["className"]($_SESSION["record"]);
 //print_r($UserObj);
 echo "<br>";
 echo "<br>";

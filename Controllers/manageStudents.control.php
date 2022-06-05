@@ -12,7 +12,7 @@
     require_once "../Views/showPaidStudents.php";
     echo '<a href="../Model/dologout.php">Log out</a>';
 
-    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+    $UserObj = new $_SESSION["className"]($_SESSION["record"]);
 
     print_r($UserObj);    
 

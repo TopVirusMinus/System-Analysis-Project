@@ -3,7 +3,7 @@
     print_r($_SESSION);
     require_once "../Model/Classes/Files.class.php";
     require_once trim($_SESSION["classLocation"]);    
-    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+    $UserObj = new $_SESSION["className"]($_SESSION["record"]);
 
     //extract url queries to variables
     $teacherId = $_GET["teacherId"];

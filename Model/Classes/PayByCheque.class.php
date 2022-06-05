@@ -7,7 +7,7 @@ require_once "../Model/Classes/Files.class.php";
 
 
 global $UserObj;
-$UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+$UserObj = new $_SESSION["className"]($_SESSION["record"]);
 $GLOBALS['obj'] = $UserObj;
 
 //print_r($UserObj);

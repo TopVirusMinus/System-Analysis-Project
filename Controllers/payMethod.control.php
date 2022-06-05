@@ -11,7 +11,7 @@
     require_once $_SESSION["classLocation"];
 
 
-    $UserObj = new ($_SESSION["className"])($_SESSION["record"]);
+    $UserObj = new $_SESSION["className"]($_SESSION["record"]);
 
     //print_r($UserObj);
     echo "<br>";

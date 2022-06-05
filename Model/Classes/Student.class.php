@@ -17,6 +17,7 @@
         protected $IPayMethod;
 
         function __construct($record){
+            
             if($record){
                 $this->id = $record[0];
                 $this->userType = $record[1];

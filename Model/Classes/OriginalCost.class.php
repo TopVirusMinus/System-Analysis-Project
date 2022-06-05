@@ -12,7 +12,7 @@ class OriginalCost extends PayTuition{
         $this->tuitionFee = $tuitionFees;
     }
 
-    public function getTuitionFees($tuitionFees){
+    public function getTuitionFees(){
         return $this->tuitionFee;
     }
 
