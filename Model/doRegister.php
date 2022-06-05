@@ -7,8 +7,8 @@
     echo $userFile->setIGetFromFile(new getLastId);
     echo $userFile->executeget();
     echo '<br><br>';
+    unset($_POST["CPassword"]);
     print_r($_POST);                                            
-    
     $_POST["Password"] = md5($_POST["Password"]);
     foreach($_POST as $p){
         $userRecord .= $p.$userFile->getSeparator();
