@@ -16,7 +16,7 @@
     require_once $_SESSION["classLocation"];
     require_once "../Model/Classes/Files.class.php";
     require_once "../Views/permissionLinkView.php";
-    print_r($_SESSION);
+    //print_r($_SESSION);
 
 
     $UserObj = new $_SESSION["className"]($_SESSION["record"]);

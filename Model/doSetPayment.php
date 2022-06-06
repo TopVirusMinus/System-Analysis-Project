@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+if (empty($_SESSION)){
+    echo "You need to login to view the dashboard! <br>";
+    echo '<a href="login.control.php">Login</a>';
+    exit;
+}
+if($_SESSION['record'][1] != 1){
+    echo "You need to login as student to use this function! <br>";
+    echo '<a href="../Model/dologout.php">Log out</a>';
+    exit;
+}
+
 require_once $_SESSION["classLocation"];
 require_once "../Model/Classes/PayByFawry.class.php";
 require_once $_GET["location"];

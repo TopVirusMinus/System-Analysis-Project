@@ -7,6 +7,12 @@
     $userFile->setIGetFromFile(new GetRowKeyword());
     $record = $userFile->executeget($_POST["email"]);
     
+    print_r($record);
+    if(!$record){
+        echo "Login unuccessful";
+        echo '<br><a href="../Controllers/login.control.php">Re-Login</a>';
+        exit;
+    }
     $mailCheck = $record[3];
     $passCheck = $record[4];
     $_POST["Password"] = md5($_POST["Password"]);
@@ -25,9 +31,5 @@
         
         print_r($_SESSION);
         header("Location: ../Controllers/dashboard.control.php");
-    }
-    else{
-        //header("Location: ../Controllers/login.control.php");
-        echo "Login unuccessful";
     }
 ?>

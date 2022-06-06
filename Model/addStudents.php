@@ -5,6 +5,17 @@
 
 <?php
     session_start();
+
+    if (empty($_SESSION)){
+        echo "You need to login to view the dashboard! <br>";
+        echo '<a href="login.control.php">Login</a>';
+        exit;
+    }
+    if($_SESSION['record'][1] != 2){
+        echo "You need to login as teacher to view this dashboard! <br>";
+        echo '<a href="../Model/dologout.php">Log out</a>';
+        exit;
+    }
 ?>
 <h1>
     List All Students
